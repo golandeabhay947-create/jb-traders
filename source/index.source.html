@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J B TRADERS (Gandhi Oil) — Liquid Gold For Every Engine</title>
+  <meta name="description" content="Genuine engine oils, tractor oils, industrial lubricants and grease at dealer prices. Authorised dealer of Motocoat, Finolube & HPCL. Interactive 3D packaging and product showroom.">
+
+  <!-- Google Fonts: Italiana, Outfit, Playfair Display, Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+    html, body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    body {
+      min-height: 1200vh;
+      font-family: 'Outfit', sans-serif;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    a, button, [role="button"], input[type="submit"], input[type="button"], select {
+      cursor: pointer;
+    }
+
+    ::-webkit-scrollbar { display: none; width: 0; }
+
+    #webgl {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+      outline: none;
+    }
+
+    /* Fixed Editorial Grid System */
+    .grid-horizontal-line {
+      position: fixed; top: 70px; left: 0; right: 0;
+      width: 100%; height: 1px;
+      background: rgba(255, 255, 255, 0.12);
+      z-index: 5; pointer-events: none;
+    }
+    .grid-lines {
+      position: fixed; top: 0; left: 40px; right: 40px;
+      width: calc(100% - 80px); height: 100vh;
+      display: flex; justify-content: space-between;
+      z-index: 5; pointer-events: none;
+    }
+    .grid-line {
+      position: relative; width: 1px; height: 100%;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .grid-line:nth-child(3) { margin-top: 70px; height: calc(100vh - 70px); }
+    .grid-dot {
+      position: absolute; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #e5a93c;
+      box-shadow: 0 0 8px rgba(229, 169, 60, 0.7);
+    }
+
+    /* Story Progress Vertical Dashes */
+    .story-dashes {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .story-dash {
+      width: 2px; height: 38px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .story-dash-fill {
+      width: 100%; height: 0%;
+      background: linear-gradient(to bottom, #e5a93c, #ffffff);
+      border-radius: 2px;
+      transition: height 0.15s ease-out;
+    }
+
+    /* Main Overlay Viewport */
+    .cinematic-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 60px 40px 60px;
+      box-sizing: border-box;
+    }
+
+    /* Luxury Header */
+    .main-header {
+      display: flex; justify-content: space-between; align-items: center;
+      width: 100%; z-index: 100;
+      pointer-events: auto !important;
+      padding: 20px 0;
+    }
+    .brand-wrap {
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none;
+    }
+    .brand-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.75));
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .brand-wrap:hover .brand-logo-img {
+      transform: scale(1.06);
+    }
+    .brand-monogram {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f5c869, #d49026);
+      color: #121212;
+      font-weight: 800;
+      font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 12px rgba(229, 169, 60, 0.5);
+    }
+    .brand-text {
+      display: flex; flex-direction: column;
+    }
+    .brand-name {
+      font-size: 13px; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .brand-sub {
+      font-size: 9px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase;
+      color: #e5a93c;
+    }
+    .header-nav { display: flex; align-items: center; gap: 20px; }
+    .nav-link {
+      color: #ffffff; text-decoration: none;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+      font-weight: 600; opacity: 0.78;
+      padding: 6px 10px;
+      border-radius: 20px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover, .nav-link.active-nav {
+      opacity: 1; color: #ffd875;
+      background: rgba(229, 169, 60, 0.14);
+      text-shadow: 0 0 10px rgba(229, 169, 60, 0.5);
+    }
+    .nav-dot { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.25); border-radius: 50%; }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .whatsapp-header-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid rgba(37, 211, 102, 0.45);
+      color: #25d366; text-decoration: none;
+      transition: all 0.25s;
+    }
+    .whatsapp-header-btn:hover {
+      background: #25d366; color: #121212;
+      box-shadow: 0 0 16px rgba(37, 211, 102, 0.6);
+      transform: scale(1.08);
+    }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 20px;
+      background: #ffffff; color: #000000;
+      text-decoration: none;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;
+      border-radius: 24px;
+      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    }
+    .btn-circle {
+      display: inline-block; width: 6px; height: 6px;
+      border: 1px solid #000000; border-radius: 50%; background: #e5a93c;
+    }
+    .contact-btn:hover {
+      transform: scale(1.05);
+      background: #e5a93c;
+      color: #111;
+      box-shadow: 0 0 20px rgba(229, 169, 60, 0.6);
+    }
+    .slide-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 9px 20px;
+      background: rgba(229, 169, 60, 0.16);
+      border: 1px solid rgba(229, 169, 60, 0.48);
+      border-radius: 9999px;
+      color: #ffd875;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      pointer-events: auto !important;
+    }
+    .slide-link-btn:hover {
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      color: #0b0c10;
+      border-color: #f7ce76;
+      box-shadow: 0 0 20px rgba(229, 169, 60, 0.65);
+      transform: translateY(-2px);
+    }
+
+    /* Slides Shared Styling - Left Docked to Showcase 3D Can on Right */
+    .slide {
+      position: absolute;
+      bottom: 8%;
+      left: 60px;
+      max-width: 530px;
+      width: calc(100% - 120px);
+      pointer-events: none !important;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1;
+      transition: opacity 0.45s ease, visibility 0.45s ease, transform 0.45s ease;
+      transform: translateY(16px);
+    }
+    .slide.active {
+      opacity: 1;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      z-index: 50;
+      transform: translateY(0);
+    }
+    .slide:not(.active) * {
+      pointer-events: none !important;
+    }
+
+    /* Frosted Obsidian Glass Container Card */
+    .slide-card {
+      background: rgba(8, 10, 16, 0.88);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(229, 169, 60, 0.38);
+      border-radius: 24px;
+      padding: 34px 38px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(229, 169, 60, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      pointer-events: auto !important;
+    }
+
+    .slide-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #ffd875;
+      text-transform: uppercase;
+      background: rgba(229, 169, 60, 0.16);
+      border: 1px solid rgba(229, 169, 60, 0.45);
+      padding: 5px 14px;
+      border-radius: 9999px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+    .slide-tag::before {
+      content: '';
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: #25d366;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #25d366;
+    }
+
+    .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 52px;
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 15%, #ffd875 55%, #e5a93c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.9));
+    }
+
+    .slide-lead {
+      font-size: 14.5px;
+      line-height: 1.65;
+      font-weight: 400;
+      color: #f1f5f9;
+      letter-spacing: 0.3px;
+      margin-bottom: 16px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+    }
+
+    .slide-specs-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .spec-pill {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #ffd875;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(229, 169, 60, 0.3);
+      padding: 5px 11px;
+      border-radius: 6px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .slide-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .slide-primary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      color: #0b0c10;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(229, 169, 60, 0.45);
+      pointer-events: auto !important;
+    }
+    .slide-primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(229, 169, 60, 0.7);
+    }
+    .slide-secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(229, 169, 60, 0.42);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      pointer-events: auto !important;
+    }
+    .slide-secondary-btn:hover {
+      background: rgba(229, 169, 60, 0.16);
+      border-color: #ffd875;
+      color: #ffd875;
+      transform: translateY(-1px);
+    }
+
+    /* Slide 2 Specifics */
+    #slide-2-img {
+      display: none;
+    }
+
+    /* Slide 3 Compact Product Selector & HUD */
+    .product-pills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+    .product-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #cbd5e1;
+      cursor: pointer !important;
+      transition: all 0.2s ease;
+      pointer-events: auto !important;
+      user-select: none;
+    }
+    .product-tab * { pointer-events: none; }
+    .product-tab:hover {
+      border-color: rgba(229, 169, 60, 0.5);
+      color: #ffd875;
+      background: rgba(229, 169, 60, 0.12);
+      transform: translateY(-1px);
+    }
+    .product-tab.active {
+      background: rgba(229, 169, 60, 0.24);
+      border-color: #e5a93c;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 0 16px rgba(229, 169, 60, 0.35);
+    }
+
+    .product-compact-hud {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(229, 169, 60, 0.25);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-top: 6px;
+    }
+    .hud-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+    .hud-grade {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 11px;
+      color: #ffd875;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      margin-top: 2px;
+    }
+    .hud-desc {
+      font-size: 12px;
+      line-height: 1.5;
+      color: #cbd5e1;
+      margin: 8px 0 10px 0;
+    }
+    .hud-mini-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 11px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 8px;
+    }
+    .hud-mini-specs .k {
+      color: #94a3b8;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .hud-mini-specs .v {
+      color: #f1f5f9;
+      font-weight: 600;
+      display: block;
+    }
+    .hud-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      color: #0b0c10;
+      font-weight: 700;
+      font-size: 10.5px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      border: none;
+    }
+    .btn-gold:hover {
+      box-shadow: 0 4px 18px rgba(229, 169, 60, 0.55);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(229, 169, 60, 0.45);
+      color: #ffd875;
+      font-weight: 600;
+      font-size: 10.5px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+    }
+    .btn-outline:hover {
+      background: rgba(229, 169, 60, 0.16);
+      border-color: #ffd875;
+    }
+
+    /* Slide 4 Compact About Us Grid */
+    .about-compact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .metric-mini-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(229, 169, 60, 0.22);
+      border-radius: 10px;
+      padding: 12px 14px;
+      transition: border-color 0.2s;
+    }
+    .metric-mini-card:hover {
+      border-color: #e5a93c;
+    }
+    .metric-mini-card .metric-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffd875;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .metric-mini-card .metric-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+    .metric-mini-card .metric-sub {
+      font-size: 10px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    /* Slide 4 Dual-Column Layout: Left Pouring Oil Showcase Box, Right Keeping Engines Running Card */
+    #slide-4.slide-dual-layout {
+      left: 60px;
+      right: 60px;
+      width: calc(100% - 120px);
+      max-width: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 36px;
+      bottom: 8%;
+    }
+
+    /* Left Showcase Box with Black Background & Smooth Up to Down Transition - Full Box Image */
+    .slide-4-image-box {
+      flex: 1;
+      max-width: 500px;
+      height: 480px;
+      max-height: calc(100vh - 160px);
+      background: #000000;
+      background: radial-gradient(circle at 55% 45%, #0c0f16 0%, #020305 75%, #000000 100%);
+      border: 1px solid rgba(229, 169, 60, 0.45);
+      border-radius: 28px;
+      padding: 0;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95),
+                  0 0 50px rgba(229, 169, 60, 0.22),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      pointer-events: auto !important;
+      /* Smooth UP TO DOWN transition: starts from above (-90px) and smoothly slides down into place */
+      opacity: 0;
+      transform: translateY(-90px);
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.75s ease,
+                  box-shadow 0.6s ease;
+    }
+
+    /* When Slide 4 is active, the image box smoothly drops down into view */
+    #slide-4.active .slide-4-image-box {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pour-ambient-glow {
+      position: absolute;
+      top: 15%;
+      left: 20%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(229, 169, 60, 0.32) 0%, rgba(207, 139, 34, 0.1) 50%, transparent 70%);
+      filter: blur(45px);
+      pointer-events: none;
+      z-index: 1;
+      animation: pourGlowPulse 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes pourGlowPulse {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      100% { transform: scale(1.1); opacity: 1.0; }
+    }
+
+    .pour-img-full {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .slide-4-image-box:hover .pour-img-full {
+      transform: scale(1.03);
+    }
+
+    /* Right Card: Keeping Engines Running */
+    .slide-4-card {
+      flex: 1;
+      max-width: 530px;
+      margin-left: auto;
+      transform: translateY(24px);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+    }
+
+    #slide-4.active .slide-4-card {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      #slide-4.slide-dual-layout {
+        gap: 20px;
+      }
+      .slide-4-image-box {
+        height: 420px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      #slide-4.slide-dual-layout {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        top: 80px;
+        bottom: 20px;
+        gap: 16px;
+      }
+      .slide-4-image-box {
+        width: 100%;
+        max-width: 100%;
+        height: 260px;
+        min-height: 260px;
+      }
+      .slide-4-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 22px 24px;
+      }
+      .about-compact-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+
+    /* Slide 5 Compact Dealer Inquiry */
+    .contact-mini-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(229, 169, 60, 0.12);
+      border: 1px solid rgba(229, 169, 60, 0.35);
+      border-radius: 20px;
+      color: #ffd875;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      pointer-events: auto !important;
+    }
+    .contact-pill:hover {
+      background: #e5a93c;
+      color: #121212;
+    }
+    .dealer-mini-form .form-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .dealer-mini-form .form-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      outline: none;
+      transition: border-color 0.2s;
+      pointer-events: auto !important;
+    }
+    .dealer-mini-form .form-input:focus {
+      border-color: #e5a93c;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .dealer-mini-form .form-submit-btn {
+      width: 100%;
+      padding: 11px;
+      background: linear-gradient(135deg, #f5c869, #d49026);
+      color: #121212;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      pointer-events: auto !important;
+    }
+    .dealer-mini-form .form-submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(229, 169, 60, 0.5);
+    }
+
+    /* Notification Toast */
+    #toast {
+      position: fixed;
+      bottom: 30px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(22, 25, 36, 0.96);
+      border: 1px solid #e5a93c;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 11px; font-weight: 600; letter-spacing: 1px;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      opacity: 0; pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Interactive 3D Control Hints */
+    .viewport-3d-hint {
+      position: fixed; bottom: 20px; right: 40px;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      z-index: 15; pointer-events: none;
+    }
+
+    @media (max-width: 900px) {
+      .slide {
+        left: 20px;
+        width: calc(100% - 40px);
+        max-width: 100%;
+        bottom: 5%;
+      }
+      .slide-card {
+        padding: 24px;
+      }
+      .slide-title {
+        font-size: 38px;
+      }
+      .product-pills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .about-compact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script src="assets/can_data.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/examples/jsm/loaders/GLTFLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Viewport 3D Hint -->
+  <div class="viewport-3d-hint">Scroll to Orbit · Drag to Tilt Can</div>
+
+  <!-- Notification Toast -->
+  <div id="toast">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e5a93c" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+    <span id="toast-text">Loaded J B TRADERS 3D Can</span>
+  </div>
+
+  <div class="cinematic-container">
+    <!-- Luxury Header -->
+    <header class="main-header">
+      <a href="index.html" class="brand-wrap">
+        <img src="assets/logo.png" onerror="this.onerror=null; this.src='../assets/logo.png';" alt="J B TRADERS - The Lube Expert" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-name">J B Traders</span>
+          <span class="brand-sub">The Lube Expert · Gandhi Oil</span>
+        </div>
+      </a>
+
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link active-nav" data-target-scroll="0.0">HOME</a>
+        <span class="nav-dot"></span>
+        <a href="showroom.html" class="nav-link" data-target-scroll="0.45">PRODUCT</a>
+        <span class="nav-dot"></span>
+        <a href="about.html" class="nav-link" data-target-scroll="0.75">ABOUT</a>
+        <span class="nav-dot"></span>
+        <a href="dealer-enquiry.html" class="nav-link" data-target-scroll="0.95">DEALER ENQUIRY</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://wa.me/919604313912?text=Hello%20J%20B%20Traders,%20I%20would%20like%20to%20enquire%20about%20dealer%20lubricant%20pricing." target="_blank" class="whatsapp-header-btn" title="Chat on WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.19-.09-1.1-.54-1.27-.6-.17-.06-.3-.09-.43.1-.13.19-.49.6-.6.73-.11.13-.23.14-.42.05-.19-.1-.8-.3-1.53-.95-.57-.51-.95-1.13-1.06-1.32-.11-.19-.01-.29.08-.38.08-.09.19-.23.29-.35.1-.11.13-.19.19-.32.06-.13.03-.24-.02-.34-.05-.1-.43-1.04-.59-1.43-.16-.38-.32-.33-.43-.33-.11 0-.24-.01-.36-.01-.13 0-.34.05-.51.24-.18.19-.68.66-.68 1.62s.7 1.88.79 2c.1.13 1.37 2.1 3.32 2.94.46.2.83.32 1.11.41.47.15.89.13 1.23.08.38-.06 1.1-.45 1.25-.89.16-.43.16-.81.11-.89-.05-.08-.17-.13-.36-.23z"/></svg>
+        </a>
+        <a href="tel:+919604313912" class="contact-btn">
+          Call Now <span class="btn-circle"></span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Slide 1: Liquid Gold For Every Engine -->
+    <div class="slide active" id="slide-1">
+      <div class="slide-card">
+        <div class="slide-tag">Authorised Distributor · Motocoat · Finolube · HPCL</div>
+        <h1 class="slide-title">Liquid Gold <br>For Every Engine</h1>
+        <p class="slide-lead">Genuine high-performance engine oils, heavy tractor oils, industrial lubricants, and grease at direct wholesale dealer prices.</p>
+        <div class="slide-specs-pills">
+          <span class="spec-pill">Heavy Duty JCB 15W-40</span>
+          <span class="spec-pill">Tractor UTTO &amp; STOU</span>
+          <span class="spec-pill">Hydraulic 68 &amp; Gear 90</span>
+          <span class="spec-pill">Synthetic 4T / 5W-30</span>
+        </div>
+        <div class="slide-actions-row">
+          <a href="showroom.html" class="slide-primary-btn">
+            Explore 3D Products &rarr;
+          </a>
+          <a href="dealer-enquiry.html" class="slide-secondary-btn">
+            Dealer Enquiry
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Engineered Protection -->
+    <div class="slide" id="slide-2">
+      <div class="slide-card">
+        <div class="slide-tag">Molecular Shear Stability</div>
+        <h2 class="slide-title">Engineered <br>Protection</h2>
+        <p class="slide-lead">A high-strength molecular film engineered for heavy industrial friction. High-grade CI-4 and synthetic esters resisting thermal breakdown, soot accumulation, and corrosive acid wear across thousands of operating hours.</p>
+        <div class="slide-specs-pills">
+          <span class="spec-pill">Zero Viscosity Breakdown</span>
+          <span class="spec-pill">Extreme Pressure EP Additives</span>
+          <span class="spec-pill">Anti-Wear Detergents</span>
+        </div>
+        <div class="slide-actions-row">
+          <a href="protection.html" class="slide-primary-btn">
+            Viscosity Science &rarr;
+          </a>
+          <a href="showroom.html" class="slide-secondary-btn">
+            View 3D Can
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Products Showroom -->
+    <div class="slide" id="slide-3">
+      <div class="slide-card">
+        <div class="slide-tag">Interactive 3D Showroom · Live Switcher</div>
+        <h2 class="slide-title" style="font-size: 42px; margin-bottom: 8px;">Products &amp; Viscosity</h2>
+        <p class="slide-lead" style="font-size: 13.5px; margin-bottom: 12px;">Select any pack category below to inspect live 3D models and specifications.</p>
+
+        <!-- Compact Product Category Selector Tabs -->
+        <div class="product-pills-grid">
+          <div class="product-tab" data-prod="2wheeler" onclick="selectProduct('2wheeler')">
+            <span>2 Wheeler (1L)</span>
+          </div>
+          <div class="product-tab" data-prod="3wheeler" onclick="selectProduct('3wheeler')">
+            <span>3 Wheeler (3L)</span>
+          </div>
+          <div class="product-tab" data-prod="4wheeler" onclick="selectProduct('4wheeler')">
+            <span>4 Wheeler (3.5L)</span>
+          </div>
+          <div class="product-tab active" data-prod="jcb" onclick="selectProduct('jcb')">
+            <span>JCB Heavy (5L)</span>
+          </div>
+          <div class="product-tab" data-prod="tractor" onclick="selectProduct('tractor')">
+            <span>Tractor UTTO</span>
+          </div>
+          <div class="product-tab" data-prod="industrial" onclick="selectProduct('industrial')">
+            <span>Industrial 68</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Product Detail HUD Card -->
+        <div class="product-compact-hud">
+          <div class="hud-name" id="hud-name">JCB &amp; Earth Moving</div>
+          <div class="hud-grade" id="hud-grade">15W-40 CI-4 Heavy Duty Commercial Pack</div>
+          <p class="hud-desc" id="hud-desc">
+            Heavy-duty diesel engine, hydraulic and transmission lubricant engineered specifically for heavy earthmoving machinery operating under extreme loads and severe dust environments.
+          </p>
+          <div class="hud-mini-specs">
+            <div><span class="k">Viscosity:</span> <strong class="v" id="hud-visc">15W-40 CI-4</strong></div>
+            <div><span class="k">Packs:</span> <strong class="v" id="hud-pack">5L Can · 20L Bucket · 210L Drum</strong></div>
+          </div>
+          <div class="hud-actions">
+            <a href="https://wa.me/919604313912?text=Hello%20J%20B%20Traders,%20I%20am%20interested%20in%20dealer%20pricing%20for%20JCB%20oil." target="_blank" class="btn-gold">
+              WhatsApp Quote
+            </a>
+            <button class="btn-outline" onclick="triggerCanSpin()">
+              Spin 360°
+            </button>
+            <a href="showroom.html" class="slide-secondary-btn" style="padding: 7px 14px; font-size: 10px;">
+              Full Showroom &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: About Us Section (Pouring Oil Box on Left, Keeping Engines Running Card on Right) -->
+    <div class="slide slide-dual-layout" id="slide-4">
+      <!-- Left: Smooth Up-to-Down Pouring Oil Showcase Box in Black Background (Full Box Image) -->
+      <div class="slide-4-image-box">
+        <div class="pour-ambient-glow"></div>
+        <img src="assets/pour_oil.png"
+             onerror="this.onerror=null; this.src='../assets/pour_oil.png';"
+             alt="Liquid Gold Engine Oil Pour"
+             class="pour-img-full">
+      </div>
+
+      <!-- Right: Keeping Engines Running Card -->
+      <div class="slide-card slide-4-card">
+        <div class="slide-tag">Authorised Distributor &amp; Network</div>
+        <h2 class="slide-title" style="font-size: 42px; margin-bottom: 8px;">Keeping Engines <br>Running</h2>
+        <p class="slide-lead" style="font-size: 13.5px; margin-bottom: 14px;">Gandhi Oil Depot · Reliable lubricant logistics direct to workshops, fleet owners, and garages across Maharashtra.</p>
+        <div class="about-compact-grid">
+          <div class="metric-mini-card">
+            <div class="metric-num">3</div>
+            <div class="metric-label">Trusted Brands</div>
+            <div class="metric-sub">Motocoat, Finolube &amp; HPCL.</div>
+          </div>
+          <div class="metric-mini-card">
+            <div class="metric-num">8+</div>
+            <div class="metric-label">Product Categories</div>
+            <div class="metric-sub">Bikes, cars, autos, tractors &amp; JCBs.</div>
+          </div>
+          <div class="metric-mini-card">
+            <div class="metric-num">1L–210L</div>
+            <div class="metric-label">Pack Sizes</div>
+            <div class="metric-sub">Retail cans, buckets, and bulk drums.</div>
+          </div>
+          <div class="metric-mini-card">
+            <div class="metric-num">100%</div>
+            <div class="metric-label">Dealer Pricing</div>
+            <div class="metric-sub">Genuine certified factory lubricants.</div>
+          </div>
+        </div>
+        <div style="margin-top: 14px;">
+          <a href="about.html" class="slide-primary-btn">
+            Read Our Heritage &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: Dealer & Delivery Enquiry -->
+    <div class="slide" id="slide-5">
+      <div class="slide-card">
+        <div class="slide-tag">Direct Wholesale Supply</div>
+        <h2 class="slide-title" style="font-size: 42px; margin-bottom: 8px;">Partner With Us</h2>
+        <p class="slide-lead" style="font-size: 13px; margin-bottom: 12px;">
+          Get wholesale workshop rates, genuine brand seal, and prompt delivery direct to your location.
+        </p>
+        <div class="contact-mini-row">
+          <a href="tel:+919604313912" class="contact-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +91 96043 13912
+          </a>
+          <a href="mailto:thelubeexpert999@gmail.com" class="contact-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            thelubeexpert999@gmail.com
+          </a>
+        </div>
+
+        <form onsubmit="handleFormSubmit(event)" class="dealer-mini-form">
+          <div class="form-row">
+            <input type="text" class="form-input" id="form-name" placeholder="Workshop / Garage Name" required>
+            <input type="tel" class="form-input" id="form-phone" placeholder="WhatsApp / Phone" required>
+          </div>
+          <div class="form-row">
+            <select class="form-input" id="form-cat">
+              <option value="JCB & Earth Moving">JCB 15W-40 CI-4</option>
+              <option value="Tractor Oil">Tractor STOU / UTTO</option>
+              <option value="2 Wheeler 4T">2 Wheeler 4T 20W-40</option>
+              <option value="4 Wheeler Synthetic">4 Wheeler 5W-30</option>
+              <option value="Commercial 3 Wheeler">3 Wheeler CNG Oil</option>
+              <option value="Industrial Hydraulic">Hydraulic 68 / Gear 90</option>
+            </select>
+            <select class="form-input" id="form-vol">
+              <option value="50-100L">50 – 100 Litres</option>
+              <option value="100-500L">100 – 500 Litres</option>
+              <option value="Bulk Barrels">Bulk Barrels (210L)</option>
+              <option value="Retail Cans">Retail Cans (5L/1L)</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit-btn">Request Wholesale Rates on WhatsApp &rarr;</button>
+        </form>
+        <div style="margin-top: 10px; text-align: center;">
+          <a href="dealer-enquiry.html" style="font-size: 11px; color: #ffd875; text-decoration: none; letter-spacing: 1px; font-weight: 600;">
+            Open Wholesale Dealer Rates Portal &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vertical Architectural Lines & Story Progress -->
+  <div class="grid-horizontal-line"></div>
+  <div class="grid-lines">
+    <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+    <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+    <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+    <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+    <div class="grid-line story-progress-container">
+      <div class="grid-dot top"></div>
+      <div class="grid-dot bottom"></div>
+      <div class="story-dashes">
+        <div class="story-dash"><div class="story-dash-fill" id="dash-fill-1"></div></div>
+        <div class="story-dash"><div class="story-dash-fill" id="dash-fill-2"></div></div>
+        <div class="story-dash"><div class="story-dash-fill" id="dash-fill-3"></div></div>
+        <div class="story-dash"><div class="story-dash-fill" id="dash-fill-4"></div></div>
+        <div class="story-dash"><div class="story-dash-fill" id="dash-fill-5"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WebGL Canvas for 3D Background Fluid & J B Traders 3D Can -->
+  <canvas id="webgl"></canvas>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+    // Global references
+    let canvas;
+    let scene, camera, renderer;
+    let gltfModel, modelPivot;
+    let canBodyMesh = null;
+    let currentScroll = 0;
+    const clock = new THREE.Clock();
+
+    let mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+
+    const sizes = { width: window.innerWidth, height: window.innerHeight };
+
+    // Fluid background shader uniforms
+    let bgMaterial;
+    const shaderUniforms = {
+      uTime: { value: 0 },
+      uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+      uMouse: { value: new THREE.Vector2(0, 0) },
+      uScroll: { value: 0 }
+    };
+
+    // Golden oil viscosity sparks
+    let sparkParticles;
+    const sparkCount = 420;
+    const sparkData = [];
+
+    // Product Specifications Catalog
+    const productCatalog = {
+      "2wheeler": {
+        name: "2 Wheeler 4T Oil",
+        grade: "4T 20W-40 SL / JASO MA2",
+        desc: "High-rpm motorcycle and scooter engine oil with friction modifier technology. Delivers smooth clutch engagement, rapid throttle response, and keeps air-cooled engines running cooler.",
+        visc: "10W-30 · 20W-40 · 20W-50",
+        pack: "1 Litre Slim Can",
+        adv: "Smooth Clutch & Thermal Shield",
+        scale: { x: 0.74, y: 0.88, z: 0.65 },
+        label: "assets/label_2wheeler.png"
+      },
+      "3wheeler": {
+        name: "3 Wheeler Auto Oil",
+        grade: "20W-40 CNG & 15W-40 DIESEL",
+        desc: "Extended drain commercial lubricant formulated for passenger autos running continuous daily stop-and-go shifts. Superior soot dispersion and clean spark plugs.",
+        visc: "15W-40 · 20W-40 CNG",
+        pack: "3 Litres Heavy Can",
+        adv: "Low Ash Deposit & High Mileage",
+        scale: { x: 0.88, y: 0.94, z: 0.82 },
+        label: "assets/label_3wheeler.png"
+      },
+      "4wheeler": {
+        name: "4 Wheeler Car Oil",
+        grade: "5W-30 API SN / FULL SYNTHETIC",
+        desc: "Advanced low-friction synthetic formulation for modern multi-valve petrol and turbo-diesel cars. Instant cold-start flow and maximum highway fuel economy.",
+        visc: "5W-30 · 10W-40 · 15W-40",
+        pack: "3.5 Litres Tech Can",
+        adv: "Zero Friction Cranking & Turbo Safe",
+        scale: { x: 0.92, y: 0.96, z: 0.88 },
+        label: "assets/label_4wheeler.png"
+      },
+      "jcb": {
+        name: "JCB & Earth Moving",
+        grade: "15W-40 CI-4 Heavy Duty Pack",
+        desc: "Extreme pressure diesel lubricant engineered for heavy earthmoving machinery operating under crushing payloads, high vibrations, and dusty quarry environments.",
+        visc: "15W-40 CI-4 · HYD 68 · UTTO",
+        pack: "5 Litres Heavy Duty Can",
+        adv: "Anti-Cavitation & Soot Control",
+        scale: { x: 1.0, y: 1.0, z: 1.0 },
+        label: "assets/label_jcb.png"
+      },
+      "tractor": {
+        name: "Tractor Oil & UTTO",
+        grade: "STOU 15W-40 & UTTO HYDRAULIC",
+        desc: "Universal tractor oil providing all-in-one protection across engine, transmission, hydraulic lift systems, and chatter-free wet brakes under harsh agricultural tilling.",
+        visc: "STOU 15W-40 · UTTO",
+        pack: "5 Litres Farm Can",
+        adv: "Wet Brake Chatter Elimination",
+        scale: { x: 1.05, y: 0.98, z: 1.05 },
+        label: "assets/label_tractor.png"
+      },
+      "industrial": {
+        name: "Industrial & Gear Oil",
+        grade: "HYD 32/46/68 & GEAR 90/140",
+        desc: "High-viscosity factory-grade lubricants and MP3 high-temperature greases. Resists foaming, protects bearings, and delivers 5000+ hours of continuous industrial uptime.",
+        visc: "HYD 32/46/68 · Gear 90/140",
+        pack: "5L / 20L Bucket / 210L Barrel",
+        adv: "Anti-Foam & Rust Oxidation Shield",
+        scale: { x: 1.02, y: 1.02, z: 1.0 },
+        label: "assets/label_industrial.png"
+      }
+    };
+
+    let activeProductId = "jcb";
+    let targetScaleVec = new THREE.Vector3(1, 1, 1);
+    const textureLoader = new THREE.TextureLoader();
+    const loadedTextures = {};
+
+    // Split title characters for Italiana cinematic blur transition
+    function splitTitlesIntoChars() {
+      const titles = document.querySelectorAll('.slide-title');
+      titles.forEach(title => {
+        const text = title.innerHTML;
+        let newHTML = '';
+        let delayCounter = 0;
+        const parts = text.split(/(<br\s*\/?>)/i);
+        parts.forEach(part => {
+          if (part.toLowerCase().startsWith('<br')) {
+            newHTML += part;
+          } else {
+            for (let i = 0; i < part.length; i++) {
+              if (part[i] === ' ') {
+                newHTML += ' ';
+              } else {
+                newHTML += `<span class="char" style="transition-delay: ${delayCounter * 0.035}s">${part[i]}</span>`;
+                delayCounter++;
+              }
+            }
+          }
+        });
+        title.innerHTML = newHTML;
+      });
+    }
+
+    // Procedural Liquid Gold Caustic Wave Background Shader
+    function createBackgroundShader() {
+      const vertexShader = `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `;
+
+      const fragmentShader = `
+        varying vec2 vUv;
+        uniform float uTime;
+        uniform vec2 uResolution;
+        uniform vec2 uMouse;
+        uniform float uScroll;
+
+        void main() {
+          vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / uResolution.y;
+          float aspect = uResolution.x / uResolution.y;
+
+          float time = uTime * 0.09;
+          float scroll = uScroll;
+
+          // Organic liquid wave angles
+          float angle1 = 0.55;
+          float angle2 = -0.72;
+          float angle3 = 1.15;
+
+          float freq1 = 2.2;
+          float freq2 = 3.0;
+          float freq3 = 3.8;
+
+          vec2 warpedUv = uv;
+          float scrollDeform = scroll * 4.5;
+
+          warpedUv.x += sin(uv.y * 2.4 + time * 0.22 + scrollDeform) * 0.35;
+          warpedUv.y += cos(uv.x * 2.4 - time * 0.16 - scrollDeform * 0.8) * 0.35;
+
+          warpedUv.x += sin(uv.y * 1.3 - time * 0.12 - scrollDeform * 1.4) * 0.22;
+          warpedUv.y += cos(uv.x * 1.3 + time * 0.19 + scrollDeform * 1.1) * 0.22;
+
+          vec2 scrollDrift = vec2(scroll * 0.04, -scroll * 0.02);
+          vec2 mouseShift = vec2(uMouse.x * aspect * 0.04, uMouse.y * 0.04);
+          warpedUv += scrollDrift + mouseShift;
+
+          vec2 dir1 = vec2(cos(angle1), sin(angle1));
+          vec2 dir2 = vec2(cos(angle2), sin(angle2));
+          vec2 dir3 = vec2(cos(angle3), sin(angle3));
+
+          float w1 = sin(dot(warpedUv, dir1) * freq1 + time * 1.1);
+          float w2 = cos(dot(warpedUv, dir2) * freq2 - time * 1.3 + w1 * 0.4);
+          float w3 = sin(dot(warpedUv, dir3) * freq3 + time * 1.7 + w2 * 0.5);
+
+          float waveField = w1 * 0.50 + w2 * 0.35 + w3 * 0.15;
+
+          float wideSheen = pow(max(0.0, 1.0 - abs(waveField - 0.1)), 2.6);
+          float crispSpecular = pow(max(0.0, 1.0 - abs(waveField - 0.15)), 8.5);
+          float crest = wideSheen * 0.5 + crispSpecular * 0.95;
+
+          // Liquid Gold & Amber Caustic Palette
+          vec3 c0_shadow = vec3(0.0012, 0.0008, 0.0004);
+          vec3 c0_wave1  = vec3(0.120, 0.075, 0.015);  // Warm honey gold
+          vec3 c0_wave2  = vec3(0.065, 0.038, 0.008);  // Rich amber depth
+          vec3 c0_crest  = vec3(0.55, 0.42, 0.18);    // Specular golden crest
+
+          // Deeper Industrial Indigo/Bronze for lower sections
+          vec3 c1_shadow = vec3(0.0006, 0.0006, 0.0010);
+          vec3 c1_wave1  = vec3(0.080, 0.055, 0.025);
+          vec3 c1_wave2  = vec3(0.030, 0.022, 0.015);
+          vec3 c1_crest  = vec3(0.48, 0.36, 0.20);
+
+          float t = smoothstep(0.0, 1.0, scroll);
+          vec3 colShadow = mix(c0_shadow, c1_shadow, t);
+          vec3 colWave1  = mix(c0_wave1, c1_wave1, t);
+          vec3 colWave2  = mix(c0_wave2, c1_wave2, t);
+          vec3 colCrest  = mix(c0_crest, c1_crest, t);
+
+          vec3 color = colShadow;
+          color = mix(color, colWave2, smoothstep(-0.6, 0.2, waveField));
+          color = mix(color, colWave1, smoothstep(0.0, 0.8, waveField));
+          color += colCrest * crest * 1.5;
+
+          float vignette = 1.0 - dot(uv, uv) * 0.14;
+          color *= vignette;
+
+          gl_FragColor = vec4(color, 1.0);
+        }
+      `;
+
+      bgMaterial = new THREE.ShaderMaterial({
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        uniforms: shaderUniforms,
+        depthWrite: false,
+        depthTest: false
+      });
+
+      const bgGeometry = new THREE.PlaneGeometry(32, 32);
+      const bgMesh = new THREE.Mesh(bgGeometry, bgMaterial);
+      bgMesh.position.set(0.0, 0.0, -8.0);
+      bgMesh.renderOrder = -10;
+      camera.add(bgMesh);
+    }
+
+    // Golden Oil Sparks / Viscosity Micro-Droplets
+    function createSparkTexture() {
+      const c = document.createElement('canvas');
+      c.width = 16; c.height = 16;
+      const ctx = c.getContext('2d');
+      const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      gradient.addColorStop(0.3, 'rgba(245, 200, 105, 0.9)');
+      gradient.addColorStop(0.7, 'rgba(212, 144, 38, 0.35)');
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 16, 16);
+      return new THREE.CanvasTexture(c);
+    }
+
+    function createSparks() {
+      const geometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(sparkCount * 3);
+      const colors = new Float32Array(sparkCount * 3);
+
+      for (let i = 0; i < sparkCount; i++) {
+        const x = (Math.random() - 0.5) * 6.5;
+        const y = (Math.random() - 0.5) * 5.0 - 0.5;
+        const z = (Math.random() - 0.5) * 6.5;
+        positions[i * 3] = x;
+        positions[i * 3 + 1] = y;
+        positions[i * 3 + 2] = z;
+
+        if (Math.random() < 0.75) {
+          // Warm Golden Amber
+          colors[i * 3] = 0.98;
+          colors[i * 3 + 1] = 0.75 + Math.random() * 0.15;
+          colors[i * 3 + 2] = 0.15 + Math.random() * 0.15;
+        } else {
+          // Radiant White Spark
+          colors[i * 3] = 1.0;
+          colors[i * 3 + 1] = 0.95;
+          colors[i * 3 + 2] = 0.85;
+        }
+
+        sparkData.push({
+          speedX: (Math.random() - 0.5) * 0.35,
+          speedY: 0.12 + Math.random() * 0.28,
+          speedZ: (Math.random() - 0.5) * 0.35,
+          swaySpeed: 0.6 + Math.random() * 1.4,
+          swayRadius: 0.06 + Math.random() * 0.14,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const material = new THREE.PointsMaterial({
+        size: 0.028,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.90,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        map: createSparkTexture()
+      });
+
+      sparkParticles = new THREE.Points(geometry, material);
+      scene.add(sparkParticles);
+    }
+
+    function base64ToArrayBuffer(base64) {
+      const b64Data = base64.split(',')[1] || base64;
+      const binary_string = window.atob(b64Data);
+      const len = binary_string.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binary_string.charCodeAt(i);
+      }
+      return bytes.buffer;
+    }
+
+    function setupCanScene(gltf) {
+      gltfModel = gltf.scene;
+      modelPivot.add(gltfModel);
+
+      gltfModel.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+          if (child.name === 'JB_Traders_Can_Body' || (child.material && child.material.name === 'JB_Traders_Molded_HDPE')) {
+            canBodyMesh = child;
+          }
+          if (child.material) {
+            child.material.roughness = 0.28;
+            child.material.metalness = 0.04;
+            if (child.material.map) {
+              child.material.map.anisotropy = 16;
+              child.material.map.flipY = false;
+            }
+          }
+        }
+      });
+
+      // Scale can to fit camera view with increased size (+30%)
+      const boxInitial = new THREE.Box3().setFromObject(gltfModel);
+      const sizeInitial = boxInitial.getSize(new THREE.Vector3());
+      const maxDim = Math.max(sizeInitial.x, sizeInitial.y, sizeInitial.z);
+      const targetScale = 3.65 / (maxDim > 0.0001 ? maxDim : 1);
+      gltfModel.scale.setScalar(targetScale);
+      gltfModel.updateMatrixWorld(true);
+
+      const boxScaled = new THREE.Box3().setFromObject(gltfModel);
+      const centerScaled = boxScaled.getCenter(new THREE.Vector3());
+      gltfModel.position.sub(centerScaled);
+      modelPivot.position.set(window.innerWidth > 900 ? 1.05 : 0.0, -0.06, 0);
+
+      showToast("J B TRADERS 3D Can Loaded");
+
+      // Preload product textures using Data URIs or file fallbacks with flipY = false
+      Object.keys(productCatalog).forEach(id => {
+        const texSrc = (window.JB_PRODUCT_TEXTURES && window.JB_PRODUCT_TEXTURES[id])
+          ? window.JB_PRODUCT_TEXTURES[id]
+          : productCatalog[id].label;
+        const tex = textureLoader.load(texSrc, (t) => {
+          t.flipY = false;
+          t.needsUpdate = true;
+        });
+        tex.flipY = false;
+        loadedTextures[id] = tex;
+      });
+    }
+
+    // Load 3D J B Traders 5L Can (Zero CORS, 100% Offline via Memory Parse)
+    function loadCanModel() {
+      modelPivot = new THREE.Group();
+      scene.add(modelPivot);
+
+      const loader = new GLTFLoader();
+
+      // Check if Embedded Base64 Bundle is available (for local file:/// access)
+      if (window.JB_CAN_MODEL_B64) {
+        try {
+          const buffer = base64ToArrayBuffer(window.JB_CAN_MODEL_B64);
+          loader.parse(
+            buffer,
+            '',
+            (gltf) => {
+              setupCanScene(gltf);
+            },
+            (err) => {
+              console.warn("ArrayBuffer parse failed, trying direct path...", err);
+              loadFromFilePath();
+            }
+          );
+          return;
+        } catch (e) {
+          console.warn("Base64 conversion failed, trying direct path...", e);
+        }
+      }
+
+      loadFromFilePath();
+
+      function loadFromFilePath() {
+        loader.load(
+          'assets/jb_traders_can_model.glb',
+          (gltf) => {
+            setupCanScene(gltf);
+          },
+          undefined,
+          (error) => {
+            console.error("Unable to load GLB model:", error);
+          }
+        );
+      }
+    }
+
+    // Dynamic Product Switcher
+    window.selectProduct = function(prodId) {
+      if (!productCatalog[prodId]) return;
+      activeProductId = prodId;
+      const data = productCatalog[prodId];
+
+      // Update UI Tabs
+      document.querySelectorAll('.product-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.getAttribute('data-prod') === prodId);
+      });
+
+      // Update HUD safely without null crashes
+      const elName = document.getElementById('hud-name');
+      if (elName) elName.textContent = data.name;
+      const elGrade = document.getElementById('hud-grade');
+      if (elGrade) elGrade.textContent = data.grade;
+      const elDesc = document.getElementById('hud-desc');
+      if (elDesc) elDesc.textContent = data.desc;
+      const elVisc = document.getElementById('hud-visc');
+      if (elVisc) elVisc.textContent = data.visc;
+      const elPack = document.getElementById('hud-pack');
+      if (elPack) elPack.textContent = data.pack;
+      const elAdv = document.getElementById('hud-adv');
+      if (elAdv) elAdv.textContent = data.adv;
+
+      // Update 3D Can Scale dynamically (1L, 3L, 3.5L, 5L)
+      targetScaleVec.set(data.scale.x, data.scale.y, data.scale.z);
+
+      // Update 3D Label Texture dynamically
+      if (canBodyMesh && canBodyMesh.material) {
+        if (!loadedTextures[prodId]) {
+          const texSrc = (window.JB_PRODUCT_TEXTURES && window.JB_PRODUCT_TEXTURES[prodId])
+            ? window.JB_PRODUCT_TEXTURES[prodId]
+            : data.label;
+          const tex = textureLoader.load(texSrc, (t) => {
+            t.flipY = false;
+            t.needsUpdate = true;
+          });
+          tex.flipY = false;
+          loadedTextures[prodId] = tex;
+        }
+        const activeTex = loadedTextures[prodId];
+        activeTex.flipY = false;
+        canBodyMesh.material.map = activeTex;
+        canBodyMesh.material.needsUpdate = true;
+      }
+
+      showToast(`Showroom: Loaded ${data.name} 3D Package`);
+    };
+
+    window.triggerCanSpin = function() {
+      if (modelPivot) {
+        const startRot = modelPivot.rotation.y;
+        const startTime = clock.getElapsedTime();
+        function spin() {
+          const elapsed = clock.getElapsedTime() - startTime;
+          if (elapsed < 1.2) {
+            modelPivot.rotation.y = startRot + Math.PI * 2 * (elapsed / 1.2);
+            requestAnimationFrame(spin);
+          } else {
+            modelPivot.rotation.y = startRot + Math.PI * 2;
+          }
+        }
+        spin();
+      }
+    };
+
+    window.handleFormSubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('form-name').value;
+      const phone = document.getElementById('form-phone').value;
+      const cat = document.getElementById('form-cat').value;
+      const vol = document.getElementById('form-vol').value;
+      const loc = document.getElementById('form-loc').value;
+
+      const waMsg = `Hello J B Traders (Gandhi Oil), my name is ${name} (${phone}). I am requesting dealer wholesale pricing for ${cat} with estimated monthly volume of ${vol} in ${loc || 'Maharashtra'}.`;
+      const waUrl = `https://wa.me/919604313912?text=${encodeURIComponent(waMsg)}`;
+      window.open(waUrl, '_blank');
+      showToast('Enquiry Sent! Connecting to WhatsApp...');
+    };
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toast-text');
+      if (toast && toastText) {
+        toastText.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 3200);
+      }
+    }
+
+    function onWindowResize() {
+      sizes.width = window.innerWidth;
+      sizes.height = window.innerHeight;
+      camera.aspect = sizes.width / sizes.height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(sizes.width, sizes.height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      if (shaderUniforms) shaderUniforms.uResolution.value.set(sizes.width, sizes.height);
+    }
+
+    function updateGridDots(scroll) {
+      const dots = document.querySelectorAll('.grid-dot');
+      dots.forEach((dot, i) => {
+        const startY = (i * 17) % 80 + 10;
+        let speed = 90 + (i * 55) % 180;
+        if (i % 2 === 0) speed = -speed;
+        let y = startY + scroll * speed;
+        y = ((y % 100) + 100) % 100;
+        dot.style.top = `${y}%`;
+      });
+    }
+
+    function updateSlides(scroll) {
+      const slide1 = document.getElementById('slide-1');
+      const slide2 = document.getElementById('slide-2');
+      const slide3 = document.getElementById('slide-3');
+      const slide4 = document.getElementById('slide-4');
+      const slide5 = document.getElementById('slide-5');
+
+      // Update story progress dash fills (5 steps)
+      for (let i = 1; i <= 5; i++) {
+        const fill = document.getElementById(`dash-fill-${i}`);
+        if (fill) {
+          const start = (i - 1) * 0.20;
+          const end = i * 0.20;
+          let progress = (scroll - start) / (end - start);
+          progress = Math.max(0, Math.min(1, progress));
+          fill.style.height = `${progress * 100}%`;
+        }
+      }
+
+      function isActive(val, start, end) { return val >= start && val <= end; }
+
+      if (slide1) slide1.classList.toggle('active', isActive(scroll, -0.10, 0.12));
+
+      if (slide2) {
+        const active2 = isActive(scroll, 0.20, 0.38);
+        slide2.classList.toggle('active', active2);
+        const slide2Img = document.getElementById('slide-2-img');
+        if (slide2Img) slide2Img.classList.toggle('active', active2);
+      }
+
+      if (slide3) slide3.classList.toggle('active', isActive(scroll, 0.44, 0.65));
+      if (slide4) slide4.classList.toggle('active', isActive(scroll, 0.70, 0.85));
+      if (slide5) slide5.classList.toggle('active', isActive(scroll, 0.88, 1.05));
+
+      // Update Header nav active state for 4 buttons (HOME, PRODUCT, ABOUT, DEALER ENQUIRY)
+      const navLinks = document.querySelectorAll('.nav-link');
+      const ranges = [
+        [0.0, 0.35],
+        [0.35, 0.65],
+        [0.65, 0.85],
+        [0.85, 1.0]
+      ];
+      navLinks.forEach((link, idx) => {
+        if (ranges[idx]) {
+          const inRange = scroll >= ranges[idx][0] && scroll <= ranges[idx][1];
+          link.classList.toggle('active-nav', inRange);
+        }
+      });
+    }
+
+    function setupNavigation() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href && href.endsWith('.html') && !href.startsWith('#')) {
+            // Allow natural page navigation
+            return;
+          }
+          e.preventDefault();
+          const targetFrac = parseFloat(link.getAttribute('data-target-scroll') || '0');
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          const targetY = maxScroll * targetFrac;
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        });
+      });
+
+      // Enable clicking on the story dashes to scrub through 3D story slides
+      const storyDashes = document.querySelectorAll('.story-dash');
+      const targetFracs = [0.0, 0.25, 0.50, 0.75, 0.95];
+      storyDashes.forEach((dash, idx) => {
+        dash.style.cursor = 'pointer';
+        dash.setAttribute('title', `Go to Slide ${idx + 1}`);
+        dash.addEventListener('click', () => {
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          window.scrollTo({ top: maxScroll * targetFracs[idx], behavior: 'smooth' });
+        });
+      });
+    }
+
+    function setupProductTabs() {
+      const tabs = document.querySelectorAll('.product-tab');
+      tabs.forEach((tab) => {
+        tab.style.cursor = 'pointer';
+        tab.setAttribute('role', 'button');
+        tab.setAttribute('tabindex', '0');
+
+        const onTabClick = function(e) {
+          if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          const prodId = tab.getAttribute('data-prod');
+          if (prodId && window.selectProduct) {
+            window.selectProduct(prodId);
+          }
+        };
+
+        tab.addEventListener('click', onTabClick);
+        tab.addEventListener('pointerup', onTabClick);
+        tab.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            onTabClick(e);
+          }
+        });
+      });
+
+      const spinBtn = document.querySelector('.btn-outline');
+      if (spinBtn) {
+        spinBtn.style.cursor = 'pointer';
+        const onSpinClick = function(e) {
+          if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          if (window.triggerCanSpin) window.triggerCanSpin();
+        };
+        spinBtn.addEventListener('click', onSpinClick);
+        spinBtn.addEventListener('pointerup', onSpinClick);
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const deltaTime = clock.getDelta();
+
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollTop = window.scrollY !== undefined ? window.scrollY
+        : (window.pageYOffset !== undefined ? window.pageYOffset : document.documentElement.scrollTop);
+      const targetScroll = maxScroll > 0 ? scrollTop / maxScroll : 0;
+
+      currentScroll += (targetScroll - currentScroll) * 0.032;
+
+      mouseX += (targetMouseX - mouseX) * 0.05;
+      mouseY += (targetMouseY - mouseY) * 0.05;
+
+      // 3D Model stationing on Right Side + smooth continuous rotation driven by scroll & mouse
+      const isDesktop = sizes.width > 900;
+
+      // Smooth removal of 3D Can during Slide 4 ("Keeping Engines Running")
+      // As scroll approaches Slide 4 (0.63 -> 0.70), visibility drops to 0.
+      // As scroll leaves Slide 4 (0.83 -> 0.89), visibility smoothly returns.
+      let canVisibilityFactor = 1.0;
+      if (currentScroll >= 0.63 && currentScroll <= 0.89) {
+        if (currentScroll < 0.70) {
+          canVisibilityFactor = 1.0 - (currentScroll - 0.63) / (0.70 - 0.63);
+        } else if (currentScroll > 0.83) {
+          canVisibilityFactor = (currentScroll - 0.83) / (0.89 - 0.83);
+        } else {
+          canVisibilityFactor = 0.0;
+        }
+      } else if (currentScroll > 0.89) {
+        canVisibilityFactor = 1.0;
+      }
+      canVisibilityFactor = Math.max(0.0, Math.min(1.0, canVisibilityFactor));
+
+      if (modelPivot) {
+        const targetScaleScaled = targetScaleVec.clone().multiplyScalar(canVisibilityFactor);
+        modelPivot.scale.lerp(targetScaleScaled, 0.08);
+
+        const targetCanX = isDesktop ? (1.05 + (1.0 - canVisibilityFactor) * 1.2) : 0.0;
+        modelPivot.position.x += (targetCanX - modelPivot.position.x) * 0.08;
+
+        const targetCanY = -0.06 - (1.0 - canVisibilityFactor) * 1.6;
+        modelPivot.position.y += (targetCanY - modelPivot.position.y) * 0.08;
+
+        // Smooth 3D rotation revealing all sides of the can during scroll
+        const targetRotY = currentScroll * Math.PI * 3.6 + mouseX * 0.28;
+        modelPivot.rotation.y += (targetRotY - modelPivot.rotation.y) * 0.08;
+        modelPivot.rotation.x = mouseY * 0.16;
+
+        modelPivot.visible = modelPivot.scale.length() > 0.005;
+      }
+
+      // Viscosity Sparks simulation
+      if (sparkParticles) {
+        const positions = sparkParticles.geometry.attributes.position.array;
+        const time = clock.getElapsedTime();
+        const scrollVelocity = Math.abs(targetScroll - currentScroll);
+        const speedMultiplier = 1.0 + scrollVelocity * 8.0;
+        const turbulence = scrollVelocity * 0.75;
+
+        for (let i = 0; i < sparkCount; i++) {
+          const idx = i * 3;
+          const data = sparkData[i];
+          positions[idx]     += data.speedX * deltaTime * speedMultiplier;
+          positions[idx + 1] += data.speedY * deltaTime * speedMultiplier;
+          positions[idx + 2] += data.speedZ * deltaTime * speedMultiplier;
+
+          const currentSway = data.swayRadius * (1.0 + turbulence * 4.0);
+          positions[idx]     += Math.sin(time * data.swaySpeed + data.phase) * currentSway * deltaTime;
+          positions[idx + 2] += Math.cos(time * data.swaySpeed + data.phase) * currentSway * deltaTime;
+
+          if (positions[idx + 1] > 3.0 || Math.abs(positions[idx]) > 3.5 || Math.abs(positions[idx + 2]) > 3.5) {
+            positions[idx + 1] = -2.5;
+            positions[idx]     = (Math.random() - 0.5) * 3.0;
+            positions[idx + 2] = (Math.random() - 0.5) * 3.0;
+          }
+        }
+        sparkParticles.geometry.attributes.position.needsUpdate = true;
+      }
+
+      // Stable Camera Position with Subtle Cinematic Elevation Drift
+      const camY = 0.16 + Math.sin(currentScroll * Math.PI) * 0.32;
+      const camZ = 4.35 - Math.sin(currentScroll * Math.PI) * 0.22;
+      const targetPos = new THREE.Vector3(0, camY, camZ);
+      camera.position.lerp(targetPos, 0.035);
+      camera.lookAt(new THREE.Vector3(0, -0.06, 0));
+
+      if (shaderUniforms) {
+        shaderUniforms.uTime.value = clock.getElapsedTime();
+        shaderUniforms.uMouse.value.set(mouseX, -mouseY);
+        shaderUniforms.uScroll.value = currentScroll;
+      }
+
+      updateSlides(currentScroll);
+      updateGridDots(currentScroll);
+      renderer.render(scene, camera);
+    }
+
+    // Pointer events for 3D model interaction
+    window.addEventListener('mousemove', (event) => {
+      targetMouseX = (event.clientX / window.innerWidth) * 2 - 1;
+      targetMouseY = (event.clientY / window.innerHeight) * 2 - 1;
+    });
+
+    window.addEventListener('resize', onWindowResize);
+
+    // Bootstrap
+    function init() {
+      splitTitlesIntoChars();
+
+      canvas = document.querySelector('#webgl');
+      if (!canvas) {
+        console.error("Canvas #webgl element not found in DOM");
+        return;
+      }
+
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color('#000000');
+      scene.fog = new THREE.FogExp2('#000000', 0.012);
+
+      camera = new THREE.PerspectiveCamera(50, sizes.width / sizes.height, 0.1, 100);
+      camera.position.set(0, 0.2, 3.2);
+      scene.add(camera);
+
+      createBackgroundShader();
+
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+        alpha: false,
+        powerPreference: "high-performance"
+      });
+      renderer.setSize(sizes.width, sizes.height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 2.1;
+
+      // Studio Lighting
+      const ambientLight = new THREE.AmbientLight('#fff7e6', 0.65);
+      scene.add(ambientLight);
+
+      const keyLight = new THREE.SpotLight('#fff2d6', 18.0);
+      keyLight.position.set(4, 6, 3);
+      keyLight.angle = Math.PI / 4;
+      keyLight.penumbra = 0.85;
+      keyLight.castShadow = true;
+      keyLight.shadow.mapSize.width = 2048;
+      keyLight.shadow.mapSize.height = 2048;
+      keyLight.shadow.bias = -0.001;
+      scene.add(keyLight);
+
+      const rimLight = new THREE.DirectionalLight('#ffd57e', 9.5);
+      rimLight.position.set(-5, 3, -4);
+      scene.add(rimLight);
+
+      const fillLight = new THREE.DirectionalLight('#cce2ff', 2.0);
+      fillLight.position.set(-2, -4, 2);
+      scene.add(fillLight);
+
+      createSparks();
+      loadCanModel();
+
+      onWindowResize();
+      animate();
+      setupNavigation();
+      setupProductTabs();
+    }
+
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+</html>

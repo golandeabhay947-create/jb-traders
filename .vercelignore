@@ -1,0 +1,10 @@
+# Exclude dev and source files from Vercel deployment
+*.py
+*.blend*
+*.log
+source/
+.git
+.gitignore
+generate_product_labels.py
+build_can_data.py
+compile_shield.py
