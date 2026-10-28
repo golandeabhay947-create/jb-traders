@@ -1,21 +1,21 @@
-"""
-Builds assets/can_data.js with embedded Base64 Data URIs for:
-- 3D J B Traders 5L Can model (GLB)
-- Product labels (2wheeler, 3wheeler, 4wheeler, jcb, tractor, industrial)
-This allows index.html to load the authentic 3D can over file:/// protocol without CORS restriction!
-"""
+"""Publish the homepage GLB and generate the embedded product-label texture bundle."""
 
 import base64
+import shutil
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = SCRIPT_DIR / "assets"
 OUT_JS = ASSETS_DIR / "can_data.js"
+SOURCE_ASSETS_DIR = SCRIPT_DIR / "source" / "assets"
+SOURCE_OUT_JS = SOURCE_ASSETS_DIR / "can_data.js"
+MODEL_SOURCE = SOURCE_ASSETS_DIR / "jb_traders_can_model_new.glb"
+MODEL_PUBLIC = ASSETS_DIR / "jb_traders_can_model_new.glb"
 
-glb_path = ASSETS_DIR / "jb_traders_can_model.glb"
-glb_bytes = glb_path.read_bytes()
-glb_b64 = base64.b64encode(glb_bytes).decode("ascii")
-glb_data_uri = f"data:model/gltf-binary;base64,{glb_b64}"
+if not MODEL_SOURCE.is_file():
+    raise FileNotFoundError(f"New 3D model not found: {MODEL_SOURCE}")
+
+shutil.copyfile(MODEL_SOURCE, MODEL_PUBLIC)
 
 product_keys = ["2wheeler", "3wheeler", "4wheeler", "jcb", "tractor", "industrial"]
 textures = {}
@@ -30,9 +30,7 @@ for k in product_keys:
         print(f"Warning: {p_path} not found")
 
 js_lines = [
-    "// Auto-generated 3D Asset Bundle for J B TRADERS (GANDHI OIL)",
-    "// Guarantees 100% offline & file:/// protocol execution with zero CORS errors",
-    f"window.JB_CAN_MODEL_B64 = '{glb_data_uri}';",
+    "// Auto-generated product texture bundle for J B TRADERS (GANDHI OIL)",
     "window.JB_PRODUCT_TEXTURES = {"
 ]
 
@@ -43,4 +41,6 @@ js_lines.append("};")
 js_lines.append("console.log('[+] J B TRADERS 3D Assets bundle loaded successfully.');")
 
 OUT_JS.write_text("\n".join(js_lines), encoding="utf-8")
+SOURCE_OUT_JS.write_text("\n".join(js_lines), encoding="utf-8")
+print(f"[+] Published 3D model: {MODEL_PUBLIC} ({MODEL_PUBLIC.stat().st_size // 1024} KB)")
 print(f"[+] Successfully generated: {OUT_JS} ({OUT_JS.stat().st_size // 1024} KB)")

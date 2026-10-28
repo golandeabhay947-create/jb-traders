@@ -4,11 +4,1059 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>J B TRADERS (Gandhi Oil) — Liquid Gold For Every Engine</title>
-  <meta name="description" content="Genuine engine oils, tractor oils, industrial lubricants and grease at dealer prices. Authorised dealer of Motocoat, Finolube & HPCL.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23e5a93c'/><text x='50' y='63' font-size='38' font-family='Arial' font-weight='bold' text-anchor='middle' fill='%23121212'>JB</text></svg>">
+  <meta name="description" content="Genuine engine oils, tractor oils, industrial lubricants and grease at wholesale dealer prices. Authorised master distributor of Motocoat, Finolube & HPCL in Pune, Maharashtra.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts: Poppins, Poppins, Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base Tokens */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #05070a;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(229, 169, 60, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 80% 75%, rgba(229, 169, 60, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 95%, rgba(200, 140, 40, 0.05) 0%, transparent 40%);
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #f1f5f9;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a, button, input, select {
+      cursor: pointer;
+    }
+
+    /* Fixed Luxury Header (Navbar) */
+    .main-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      width: 100%;
+      height: 76px;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(5, 7, 10, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(229, 169, 60, 0.22);
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .brand-wrap:hover {
+      transform: translateY(-1px);
+    }
+    .brand-logo-img {
+      height: 46px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .brand-sub {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #e5a93c;
+    }
+
+    /* Navigation Dock */
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(14, 18, 26, 0.85);
+      border: 1px solid rgba(229, 169, 60, 0.3);
+      border-radius: 9999px;
+      padding: 6px 12px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .nav-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-link:hover {
+      color: #ffd875;
+      background: rgba(229, 169, 60, 0.15);
+    }
+    .nav-link.active-nav {
+      color: #0b0c10;
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      font-weight: 700;
+      box-shadow: 0 0 18px rgba(229, 169, 60, 0.55);
+    }
+    .nav-dot {
+      width: 3px; height: 3px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+    }
+
+    /* Header Actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .whatsapp-header-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid rgba(37, 211, 102, 0.45);
+      color: #25d366;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .whatsapp-header-btn:hover {
+      background: #25d366;
+      color: #0b0c10;
+      box-shadow: 0 0 16px rgba(37, 211, 102, 0.6);
+      transform: scale(1.08);
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      color: #0b0c10;
+      text-decoration: none;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      border-radius: 9999px;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 18px rgba(229, 169, 60, 0.4);
+    }
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(229, 169, 60, 0.65);
+    }
+    .btn-circle {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #0b0c10;
+    }
+
+    /* Mobile Hamburger Menu Toggle Button */
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      background: rgba(14, 18, 26, 0.85);
+      border: 1px solid rgba(229, 169, 60, 0.4);
+      border-radius: 10px;
+      color: #ffd875;
+      padding: 0;
+    }
+    .mobile-menu-btn svg {
+      width: 22px; height: 22px;
+    }
+
+    /* Mobile Drawer */
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 290px;
+      height: 100vh;
+      background: rgba(10, 13, 20, 0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-left: 1px solid rgba(229, 169, 60, 0.35);
+      z-index: 2000;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -15px 0 40px rgba(0, 0, 0, 0.9);
+    }
+    .mobile-nav-drawer.open {
+      right: 0;
+    }
+    .mobile-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .mobile-drawer-close {
+      background: transparent;
+      border: none;
+      color: #ffd875;
+      font-size: 24px;
+      line-height: 1;
+    }
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .mobile-nav-link {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.2s;
+    }
+    .mobile-nav-link.active-nav, .mobile-nav-link:hover {
+      color: #0b0c10;
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      border-color: #f7ce76;
+    }
+    .mobile-drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* =========================================================================
+       HERO SECTION (Occupies Complete First Screen Below Navbar)
+       ========================================================================= */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      min-height: calc(100vh - 76px);
+      margin-top: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 40px 0;
+      isolation: isolate;
+    }
+
+    /* 3D WebGL Background Canvas */
+    .hero-canvas-wrap {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+      outline: none;
+      pointer-events: auto;
+    }
+    #webgl {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+      outline: none;
+      touch-action: pan-y;
+    }
+    #webgl:active {
+      cursor: grabbing;
+    }
+
+    /* Hero Two-Column Content Layout */
+    .hero-content-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 3vw, 40px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(250px, 0.9fr);
+      align-items: center;
+      gap: clamp(24px, 3vw, 48px);
+      pointer-events: none;
+    }
+
+    .hero-left {
+      pointer-events: auto;
+      max-width: 580px;
+    }
+
+    /* Partner With Us Card (Exact Match to Image 2!) */
+    .partner-card {
+      background: rgba(14, 18, 28, 0.84);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(229, 169, 60, 0.38);
+      border-radius: 26px;
+      padding: clamp(24px, 2.8vw, 38px) clamp(22px, 3vw, 40px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(229, 169, 60, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .partner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(229, 169, 60, 0.16);
+      border: 1px solid rgba(229, 169, 60, 0.45);
+      color: #ffd875;
+      font-family: 'Poppins', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+    .badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #25d366;
+      box-shadow: 0 0 8px #25d366;
+    }
+
+    .partner-title {
+      font-size: clamp(34px, 3.2vw, 46px);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+    .gold-text {
+      color: #ffd875;
+      background: linear-gradient(135deg, #ffd875 30%, #e5a93c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .partner-lead {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    /* Contact Pills Row */
+    .partner-contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .partner-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(229, 169, 60, 0.35);
+      border-radius: 9999px;
+      color: #ffd875;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .partner-pill:hover {
+      background: rgba(229, 169, 60, 0.18);
+      border-color: #ffd875;
+      transform: translateY(-1px);
+    }
+
+    /* Partner Form */
+    .partner-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .form-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.25s;
+    }
+    .form-input:focus {
+      border-color: #ffd875;
+      background: rgba(229, 169, 60, 0.08);
+      box-shadow: 0 0 16px rgba(229, 169, 60, 0.2);
+    }
+    .form-input::placeholder {
+      color: #94a3b8;
+    }
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ffd875' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 32px;
+    }
+    .form-select option {
+      background: #0f141f;
+      color: #ffffff;
+    }
+
+    .partner-submit-btn {
+      width: 100%;
+      padding: 14px 24px;
+      margin-top: 10px;
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      color: #0b0c10;
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 22px rgba(229, 169, 60, 0.45);
+    }
+    .partner-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(229, 169, 60, 0.7);
+    }
+
+    .partner-portal-link {
+      text-align: center;
+      margin-top: 16px;
+    }
+    .partner-portal-link a {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #ffd875;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .partner-portal-link a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Hero Right Column: Floating Actions & Bottle Hints */
+    .hero-right {
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+      height: 100%;
+      min-height: 420px;
+      position: relative;
+      z-index: 3;
+    }
+
+    @media (min-width: 1440px) {
+      .hero-right { transform: translateX(calc(50vw - 672px)); }
+    }
+
+    .hero-floating-actions {
+      pointer-events: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: rgba(14, 18, 28, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(229, 169, 60, 0.35);
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+      max-width: min(100%, 250px);
+    }
+    .hero-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .hero-cta-btn.whatsapp-cta {
+      background: rgba(37, 211, 102, 0.16);
+      border: 1px solid rgba(37, 211, 102, 0.5);
+      color: #25d366;
+    }
+    .hero-cta-btn.whatsapp-cta:hover {
+      background: #25d366;
+      color: #0b0c10;
+      box-shadow: 0 0 16px rgba(37, 211, 102, 0.6);
+      transform: translateY(-2px);
+    }
+    .hero-cta-btn.call-cta {
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      color: #0b0c10;
+      box-shadow: 0 4px 15px rgba(229, 169, 60, 0.4);
+    }
+    .hero-cta-btn.call-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(229, 169, 60, 0.65);
+    }
+    .hero-cta-btn.spin-cta {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(229, 169, 60, 0.4);
+      color: #ffd875;
+    }
+    .hero-cta-btn.spin-cta:hover {
+      background: rgba(229, 169, 60, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .hero-bottle-hint {
+      pointer-events: auto;
+      font-family: 'Poppins', monospace;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #ffd875;
+      background: rgba(5, 7, 10, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1px solid rgba(229, 169, 60, 0.3);
+      margin-top: 8px;
+    }
+
+    /* =========================================================================
+       SECTION 2: FOUR FEATURE CARDS (Immediately Below Hero)
+       ========================================================================= */
+    .feature-cards-section {
+      position: relative;
+      z-index: 20;
+      background: #05070a;
+      background-image:
+        radial-gradient(circle at 15% 25%, rgba(229, 169, 60, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(229, 169, 60, 0.06) 0%, transparent 50%);
+      padding: 90px 40px 100px 40px;
+      border-top: 1px solid rgba(229, 169, 60, 0.22);
+    }
+
+    .section-header {
+      max-width: 1280px;
+      margin: 0 auto 50px auto;
+      text-align: center;
+    }
+    .section-tag {
+      display: inline-block;
+      font-family: 'Poppins', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #e5a93c;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+    .section-sub {
+      font-size: 15px;
+      color: #cbd5e1;
+      max-width: 780px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* 4 Feature Cards Grid */
+    .feature-cards-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: rgba(14, 18, 28, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(229, 169, 60, 0.28);
+      border-radius: 22px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.75);
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(229, 169, 60, 0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 25px rgba(229, 169, 60, 0.15);
+    }
+
+    .card-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Poppins', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffd875;
+      background: rgba(229, 169, 60, 0.14);
+      border: 1px solid rgba(229, 169, 60, 0.35);
+      padding: 5px 12px;
+      border-radius: 9999px;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+    .card-title {
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .card-lead {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* Specs Pills in Cards */
+    .specs-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .spec-pill {
+      font-family: 'Poppins', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: #ffd875;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(229, 169, 60, 0.28);
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+
+    /* Card Actions */
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 10px;
+    }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      color: #0b0c10;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 18px rgba(229, 169, 60, 0.4);
+      border: none;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(229, 169, 60, 0.65);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(229, 169, 60, 0.4);
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-outline:hover {
+      background: rgba(229, 169, 60, 0.16);
+      border-color: #ffd875;
+      color: #ffd875;
+      transform: translateY(-2px);
+    }
+
+    /* Card 2 Product Selector Styling */
+    .product-tabs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .prod-tab {
+      padding: 8px 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .prod-tab:hover {
+      border-color: rgba(229, 169, 60, 0.5);
+      color: #ffd875;
+    }
+    .prod-tab.active {
+      background: rgba(229, 169, 60, 0.22);
+      border-color: #ffd875;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 0 14px rgba(229, 169, 60, 0.35);
+    }
+
+    .prod-hud-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(229, 169, 60, 0.25);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+    .hud-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .hud-grade {
+      font-family: 'Poppins', monospace;
+      font-size: 11.5px;
+      color: #ffd875;
+      font-weight: 700;
+      margin-top: 2px;
+      margin-bottom: 8px;
+    }
+    .hud-desc {
+      font-size: 12.5px;
+      color: #cbd5e1;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .hud-specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 11px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 10px;
+    }
+    .hud-k { color: #94a3b8; font-size: 10px; text-transform: uppercase; }
+    .hud-v { color: #ffffff; font-weight: 700; display: block; }
+
+    /* Card 4 Metrics Mini Grid */
+    .metrics-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .metric-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(229, 169, 60, 0.22);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .metric-val {
+      font-family: 'Poppins', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffd875;
+      margin-bottom: 2px;
+    }
+    .metric-lbl {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+    .metric-sub {
+      font-size: 10.5px;
+      color: #94a3b8;
+    }
+
+    /* =========================================================================
+       LUXURY FOOTER
+       ========================================================================= */
+    .luxury-footer {
+      border-top: 1px solid rgba(229, 169, 60, 0.2);
+      padding: 60px 40px 30px 40px;
+      background: #030406;
+    }
+    .footer-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-col h4 {
+      font-family: 'Poppins', monospace;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffd875;
+      margin-bottom: 18px;
+    }
+    .footer-col p {
+      font-size: 13.5px;
+      color: #94a3b8;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #ffd875;
+    }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px; left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: rgba(14, 18, 26, 0.96);
+      border: 1px solid #ffd875;
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      z-index: 3000;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* =========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================= */
+    @media (max-width: 1024px) {
+      .main-header { padding: 0 20px; }
+      .header-nav { display: none; }
+      .mobile-menu-btn { display: inline-flex; }
+      .hero-section { padding-bottom: 0; }
+      .hero-content-container {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        padding-bottom: clamp(400px, 48vw, 500px);
+        gap: 20px;
+      }
+      .hero-left {
+        max-width: 100%;
+      }
+      .hero-right {
+        align-items: flex-end;
+        min-height: auto;
+        height: auto;
+        margin-top: 0;
+      }
+      .hero-floating-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .feature-cards-section { padding: 70px 20px; }
+      .feature-cards-grid { grid-template-columns: 1fr; }
+      .footer-content { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .partner-card { padding: 26px 20px; }
+      .hero-section { overflow: visible; padding: 24px 0 32px; }
+      .hero-content-container { padding-left: 14px; padding-right: 14px; }
+      .partner-title { font-size: clamp(30px, 9vw, 36px); }
+      .partner-form .form-row { grid-template-columns: 1fr; }
+      .partner-contact-row { flex-direction: column; align-items: stretch; }
+      .partner-pill { width: 100%; overflow-wrap: anywhere; }
+      .hero-right { align-items: stretch; }
+      .hero-floating-actions { width: 100%; max-width: none; }
+      .hero-cta-btn { justify-content: center; flex: 1 1 140px; }
+      .hero-bottle-hint { align-self: center; text-align: center; }
+      .product-tabs-grid { grid-template-columns: 1fr 1fr; }
+      .metrics-mini-grid { grid-template-columns: 1fr; }
+      .footer-content { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    }
+
+    @media (max-width: 380px) {
+      .main-header { padding: 8px 12px; }
+      .brand-wrap { gap: 8px; }
+      .brand-logo-img { height: 38px; }
+      .brand-name { font-size: 12px; letter-spacing: 2px; }
+      .brand-sub { font-size: 8px; letter-spacing: 1px; }
+      .header-actions { gap: 7px; }
+      .contact-btn { padding: 8px 10px; font-size: 9px; letter-spacing: 0.8px; }
+      .partner-card { padding: 22px 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    html { overflow-x: clip; }
+    body { width: 100%; overflow-x: hidden; }
+    img, svg { max-width: 100%; }
+    button, input, select, textarea { font: inherit; }
+    :focus-visible { outline: 2px solid #ffd875; outline-offset: 3px; }
+
+    @media (max-width: 1024px) {
+      .header-nav { display: none; }
+      .mobile-menu-btn { display: inline-flex; }
+    }
+
+    @media (max-width: 640px) {
+      .main-header { min-height: 64px; padding: 8px 14px; gap: 8px; }
+      .brand-wrap { min-width: 0; gap: 8px; }
+      .brand-logo-img { height: 38px; max-width: 42px; }
+      .brand-text { min-width: 0; }
+      .brand-name { font-size: 12px; letter-spacing: 2px; }
+      .brand-sub { font-size: 8px; letter-spacing: 1px; }
+      .header-actions { flex-shrink: 0; gap: 8px; }
+      .contact-btn { padding: 8px 10px; font-size: 9px; letter-spacing: 0.8px; }
+      .mobile-nav-drawer { max-width: calc(100vw - 16px); overflow-y: auto; }
+      .page-wrapper { width: 100%; padding-left: 14px; padding-right: 14px; }
+      .product-card, .feature-card, .dealer-card, .detail-hud-card { min-width: 0; }
+      .form-row { grid-template-columns: minmax(0, 1fr); }
+      .form-input, input, select, textarea { min-width: 0; max-width: 100%; }
+    }
+
+    @media (max-width: 380px) {
+      .main-header { padding-left: 10px; padding-right: 10px; }
+      .brand-wrap { gap: 6px; }
+      .brand-logo-img { height: 34px; max-width: 36px; }
+      .brand-name { font-size: 11px; letter-spacing: 1.5px; }
+      .brand-sub { font-size: 7px; letter-spacing: 0.7px; }
+      .header-actions { gap: 6px; }
+      .contact-btn { width: 40px; height: 40px; padding: 0; justify-content: center; font-size: 0; }
+      .contact-btn::before { content: "Call"; font-size: 10px; letter-spacing: 0; }
+      .contact-btn .btn-circle { display: none; }
+      .page-wrapper { padding-left: 12px; padding-right: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+</style>
+
   <script src="assets/can_data.js"></script>
   <script type="importmap">
   {
@@ -18,17 +1066,1025 @@
     }
   }
   </script>
-  <script>
-  /* J B TRADERS PROPRIETARY RUNTIME - PROTECTED APPLICATION CODE */
-  (function(_0x9a8f){ 'use strict'; (function(){ 'use strict'; window.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; }, true); window.addEventListener('keydown', function(e){ if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); e.stopPropagation(); return false; } if ((e.ctrlKey || e.metaKey) && ( e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || ((e.shiftKey || e.altKey) && ( e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C' )) )) { e.preventDefault(); e.stopPropagation(); return false; } }, true); document.addEventListener('selectstart', function(e){ if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT')) return true; e.preventDefault(); return false; }, true); document.addEventListener('dragstart', function(e){ if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return true; e.preventDefault(); return false; }, true); document.addEventListener('copy', function(e){ if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return true; e.preventDefault(); return false; }, true); document.addEventListener('cut', function(e){ if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return true; e.preventDefault(); return false; }, true); var _n = function(){}; try { ['log','warn','info','error','dir','table','trace','debug'].forEach(function(m){ if (window.console && window.console[m]) window.console[m] = _n; }); } catch(e){} setInterval(function(){ (function(){ return !0; }).constructor('debugger').call(); }, 150); })(); function _0x3b1c(b64){ var bin = window.atob(b64); var bytes = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i); return bytes; } async function _0x7f2a(){ try { var compressed = _0x3b1c(_0x9a8f); var ds = new DecompressionStream('deflate'); var writer = ds.writable.getWriter(); writer.write(compressed); writer.close(); var output = []; var reader = ds.readable.getReader(); while (true) { var r = await reader.read(); if (r.done) break; output.push(r.value); } var totalLen = output.reduce(function(acc, curr){ return acc + curr.length; }, 0); var resBytes = new Uint8Array(totalLen); var offset = 0; for (var chunk of output) { resBytes.set(chunk, offset); offset += chunk.length; } var jsonStr = new TextDecoder().decode(resBytes); var data = JSON.parse(jsonStr); var styleEl = document.createElement('style'); styleEl.textContent = data.s; document.head.appendChild(styleEl); document.body.innerHTML = data.b; document.body.style.minHeight = '100vh'; document.body.style.overflowX = 'hidden'; document.body.style.overflowY = 'auto'; var scriptEl = document.createElement('script'); scriptEl.type = 'module'; scriptEl.textContent = data.j; document.body.appendChild(scriptEl); window.dispatchEvent(new Event('DOMContentLoaded')); } catch(err){ console.warn(err); } } if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', _0x7f2a); } else { _0x7f2a(); } })('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');
-  </script>
 </head>
-<body style="background:#05070a;margin:0;min-height:100vh;overflow-x:hidden;-webkit-user-select:none;user-select:none;">
-  <noscript>
-    <div style="color:#e5a93c;font-family:sans-serif;text-align:center;padding:80px 20px;">
-      <h2>JavaScript Required</h2>
-      <p>Please enable JavaScript to view J B TRADERS (Gandhi Oil) 3D Digital Packaging Studio.</p>
+<body>
+
+  <!-- Toast Notification -->
+  <div id="toast">Loaded 3D Packaging</div>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer-overlay" id="drawerOverlay" onclick="closeMobileDrawer(event)"></div>
+
+  <!-- Mobile Nav Drawer -->
+  <aside class="mobile-nav-drawer" id="mobileDrawer">
+    <div>
+      <div class="mobile-drawer-header">
+        <div class="brand-text">
+          <span class="brand-name">J B Traders</span>
+          <span class="brand-sub">The Lube Expert · Gandhi Oil</span>
+        </div>
+        <button class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Close Navigation">✕</button>
+      </div>
+
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link active-nav">HOME</a>
+        <a href="showroom.html" class="mobile-nav-link">PRODUCT SHOWROOM</a>
+        <a href="liquid-gold.html" class="mobile-nav-link">LIQUID GOLD RANGE</a>
+        <a href="protection.html" class="mobile-nav-link">VISCOSITY SCIENCE</a>
+        <a href="about.html" class="mobile-nav-link">ABOUT US</a>
+        <a href="dealer-enquiry.html" class="mobile-nav-link">DEALER ENQUIRY</a>
+      </nav>
     </div>
-  </noscript>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <a href="https://wa.me/919604313912?text=Hello%20J%20B%20Traders,%20I%20am%20inquiring%20about%20dealer%20pricing." target="_blank" class="hero-cta-btn whatsapp-cta" style="justify-content: center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.19-.09-1.1-.54-1.27-.6-.17-.06-.3-.09-.43.1-.13.19-.49.6-.6.73-.11.13-.23.14-.42.05-.19-.1-.8-.3-1.53-.95-.57-.51-.95-1.13-1.06-1.32-.11-.19-.01-.29.08-.38.08-.09.19-.23.29-.35.1-.11.13-.19.19-.32.06-.13.03-.24-.02-.34-.05-.1-.43-1.04-.59-1.43-.16-.38-.32-.33-.43-.33-.11 0-.24-.01-.36-.01-.13 0-.34.05-.51.24-.18.19-.68.66-.68 1.62s.7 1.88.79 2c.1.13 1.37 2.1 3.32 2.94.46.2.83.32 1.11.41.47.15.89.13 1.23.08.38-.06 1.1-.45 1.25-.89.16-.43.16-.81.11-.89-.05-.08-.17-.13-.36-.23z"/></svg>
+        WhatsApp Order Desk
+      </a>
+      <a href="tel:+919604313912" class="hero-cta-btn call-cta" style="justify-content: center;">
+        Call Warehouse: +91 96043 13912
+      </a>
+    </div>
+  </aside>
+
+  <!-- Fixed Luxury Header (Navbar) -->
+  <header class="main-header">
+    <a href="index.html" class="brand-wrap">
+      <img src="assets/logo.png" alt="J B TRADERS - The Lube Expert" class="brand-logo-img">
+      <div class="brand-text">
+        <span class="brand-name">J B Traders</span>
+        <span class="brand-sub">The Lube Expert · Gandhi Oil</span>
+      </div>
+    </a>
+
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link active-nav">HOME</a>
+      <span class="nav-dot"></span>
+      <a href="showroom.html" class="nav-link">PRODUCT</a>
+      <span class="nav-dot"></span>
+      <a href="about.html" class="nav-link">ABOUT</a>
+      <span class="nav-dot"></span>
+      <a href="dealer-enquiry.html" class="nav-link">DEALER ENQUIRY</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://wa.me/919604313912?text=Hello%20J%20B%20Traders,%20I%20would%20like%20to%20enquire%20about%20dealer%20pricing." target="_blank" class="whatsapp-header-btn" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.19-.09-1.1-.54-1.27-.6-.17-.06-.3-.09-.43.1-.13.19-.49.6-.6.73-.11.13-.23.14-.42.05-.19-.1-.8-.3-1.53-.95-.57-.51-.95-1.13-1.06-1.32-.11-.19-.01-.29.08-.38.08-.09.19-.23.29-.35.1-.11.13-.19.19-.32.06-.13.03-.24-.02-.34-.05-.1-.43-1.04-.59-1.43-.16-.38-.32-.33-.43-.33-.11 0-.24-.01-.36-.01-.13 0-.34.05-.51.24-.18.19-.68.66-.68 1.62s.7 1.88.79 2c.1.13 1.37 2.1 3.32 2.94.46.2.83.32 1.11.41.47.15.89.13 1.23.08.38-.06 1.1-.45 1.25-.89.16-.43.16-.81.11-.89-.05-.08-.17-.13-.36-.23z"/></svg>
+      </a>
+      <a href="tel:+919604313912" class="contact-btn" aria-label="Call helpline">
+        Call Helpline <span class="btn-circle"></span>
+      </a>
+      <button class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Open Menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       HERO SECTION (Occupies Complete First Screen Below Navbar)
+       ========================================================================= -->
+  <section class="hero-section">
+    <!-- WebGL Background & 3D Can Canvas Container -->
+    <div class="hero-canvas-wrap">
+      <canvas id="webgl" aria-label="Interactive 3D product viewer. Drag to rotate the can." tabindex="0"></canvas>
+    </div>
+
+    <!-- Hero Content Overlay -->
+    <div class="hero-content-container">
+      <!-- Left Column: Partner With Us Card (Exact Match to Image 2!) -->
+      <div class="hero-left">
+        <div class="partner-card">
+          <div class="partner-badge">
+            <span class="badge-dot"></span>
+            DIRECT WHOLESALE SUPPLY
+          </div>
+
+          <h1 class="partner-title">Partner <span class="gold-text">With Us</span></h1>
+          <p class="partner-lead">
+            Get wholesale workshop rates, genuine brand seal, and prompt delivery direct to your location.
+          </p>
+
+          <div class="partner-contact-row">
+            <a href="tel:+919604313912" class="partner-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +91 96043 13912
+            </a>
+            <a href="mailto:thelubeexpert999@gmail.com" class="partner-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              thelubeexpert999@gmail.com
+            </a>
+          </div>
+
+          <form onsubmit="handleFormSubmit(event)" class="partner-form">
+            <div class="form-row">
+              <input type="text" class="form-input" id="form-name" placeholder="Workshop / Garage Name" required>
+              <input type="tel" class="form-input" id="form-phone" placeholder="WhatsApp / Phone" required>
+            </div>
+            <div class="form-row">
+              <select class="form-input form-select" id="form-cat">
+                <option value="JCB 15W-40 CI-4">JCB 15W-40 CI-4</option>
+                <option value="Tractor STOU / UTTO">Tractor STOU / UTTO</option>
+                <option value="2 Wheeler 4T 20W-40">2 Wheeler 4T 20W-40</option>
+                <option value="4 Wheeler 5W-30">4 Wheeler 5W-30</option>
+                <option value="3 Wheeler CNG Oil">3 Wheeler CNG Oil</option>
+                <option value="Hydraulic 68 / Gear 90">Hydraulic 68 / Gear 90</option>
+              </select>
+              <select class="form-input form-select" id="form-vol">
+                <option value="50 – 100 Litres">50 – 100 Litres</option>
+                <option value="100 – 500 Litres">100 – 500 Litres</option>
+                <option value="Bulk Barrels (210L)">Bulk Barrels (210L)</option>
+                <option value="Retail Cans (5L/1L)">Retail Cans (5L/1L)</option>
+              </select>
+            </div>
+            <button type="submit" class="partner-submit-btn">
+              REQUEST WHOLESALE RATES ON WHATSAPP &rarr;
+            </button>
+          </form>
+
+          <div class="partner-portal-link">
+            <a href="dealer-enquiry.html">Open Wholesale Dealer Rates Portal &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Prominent Action Buttons & 3D Interactive Controls -->
+      <div class="hero-right">
+        <div class="hero-floating-actions">
+          <a href="https://wa.me/919604313912?text=Hello%20J%20B%20Traders,%20I%20would%20like%20to%20request%20wholesale%20dealer%20rates." target="_blank" class="hero-cta-btn whatsapp-cta">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.19-.09-1.1-.54-1.27-.6-.17-.06-.3-.09-.43.1-.13.19-.49.6-.6.73-.11.13-.23.14-.42.05-.19-.1-.8-.3-1.53-.95-.57-.51-.95-1.13-1.06-1.32-.11-.19-.01-.29.08-.38.08-.09.19-.23.29-.35.1-.11.13-.19.19-.32.06-.13.03-.24-.02-.34-.05-.1-.43-1.04-.59-1.43-.16-.38-.32-.33-.43-.33-.11 0-.24-.01-.36-.01-.13 0-.34.05-.51.24-.18.19-.68.66-.68 1.62s.7 1.88.79 2c.1.13 1.37 2.1 3.32 2.94.46.2.83.32 1.11.41.47.15.89.13 1.23.08.38-.06 1.1-.45 1.25-.89.16-.43.16-.81.11-.89-.05-.08-.17-.13-.36-.23z"/></svg>
+            <span>WhatsApp Enquiry</span>
+          </a>
+          <a href="tel:+919604313912" class="hero-cta-btn call-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Call Helpline</span>
+          </a>
+          <button class="hero-cta-btn spin-cta" onclick="triggerCanSpin()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <span>360° Rotate Can</span>
+          </button>
+        </div>
+
+        <div class="hero-bottle-hint">
+          Drag Can to Orbit · 360° Packaging
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 2: FOUR FEATURE CARDS (Immediately Below Hero)
+       ========================================================================= -->
+  <section class="feature-cards-section" id="feature-section">
+    <div class="section-header">
+      <div class="section-tag">J B TRADERS · AUTHORISED DISTRIBUTION SPECTRUM</div>
+      <h2 class="section-title">Engineered Lubrication Excellence</h2>
+      <p class="section-sub">
+        Explore genuine factory-sealed formulations engineered for extreme industrial loads, high-RPM thermal stability, and maximum engine longevity.
+      </p>
+    </div>
+
+    <div class="feature-cards-grid">
+      <!-- Card 1: Liquid Gold For Every Engine -->
+      <div class="feature-card">
+        <div>
+          <div class="card-tag">Authorised Distributor · Motocoat · Finolube · HPCL</div>
+          <h3 class="card-title">Liquid Gold <br>For Every Engine</h3>
+          <p class="card-lead">
+            Genuine high-performance engine oils, heavy tractor oils, industrial lubricants, and grease supplied directly at wholesale dealer prices.
+          </p>
+          <div class="specs-pills-row">
+            <span class="spec-pill">Heavy Duty JCB 15W-40</span>
+            <span class="spec-pill">Tractor UTTO &amp; STOU</span>
+            <span class="spec-pill">Hydraulic 68 &amp; Gear 90</span>
+            <span class="spec-pill">Synthetic 4T / 5W-30</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="showroom.html" class="btn-gold">Explore 3D Products &rarr;</a>
+          <a href="liquid-gold.html" class="btn-outline">Full Product Range</a>
+        </div>
+      </div>
+
+      <!-- Card 2: Products & Viscosity (Live 3D Switcher) -->
+      <div class="feature-card">
+        <div>
+          <div class="card-tag">Interactive Showroom · Live Switcher</div>
+          <h3 class="card-title">Products &amp; Viscosity</h3>
+          <p class="card-lead">
+            Select any pack category below to inspect live 3D models and technical viscosity specifications:
+          </p>
+
+          <!-- Product Switcher Tabs -->
+          <div class="product-tabs-grid">
+            <div class="prod-tab" data-prod="2wheeler" onclick="selectProduct('2wheeler')">2 Wheeler (1L)</div>
+            <div class="prod-tab" data-prod="3wheeler" onclick="selectProduct('3wheeler')">3 Wheeler (3L)</div>
+            <div class="prod-tab" data-prod="4wheeler" onclick="selectProduct('4wheeler')">4 Wheeler (3.5L)</div>
+            <div class="prod-tab active" data-prod="jcb" onclick="selectProduct('jcb')">JCB Heavy (5L)</div>
+            <div class="prod-tab" data-prod="tractor" onclick="selectProduct('tractor')">Tractor UTTO</div>
+            <div class="prod-tab" data-prod="industrial" onclick="selectProduct('industrial')">Industrial 68</div>
+          </div>
+
+          <!-- Dynamic HUD Display -->
+          <div class="prod-hud-card">
+            <div class="hud-title" id="hud-name">JCB &amp; Earth Moving</div>
+            <div class="hud-grade" id="hud-grade">15W-40 CI-4 Heavy Duty Commercial Pack</div>
+            <p class="hud-desc" id="hud-desc">
+              Heavy-duty diesel engine, hydraulic and transmission lubricant engineered specifically for heavy earthmoving machinery operating under extreme loads and severe dust environments.
+            </p>
+            <div class="hud-specs-grid">
+              <div><span class="hud-k">Viscosity:</span> <strong class="hud-v" id="hud-visc">15W-40 CI-4</strong></div>
+              <div><span class="hud-k">Packaging:</span> <strong class="hud-v" id="hud-pack">5L Can · 20L Bucket · 210L Drum</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <a href="showroom.html" class="btn-gold">Launch 3D Studio &rarr;</a>
+          <a href="https://wa.me/919604313912?text=Hello%20J%20B%20Traders,%20I%20am%20interested%20in%20pricing%20for%20JCB%2015W-40%20oil." target="_blank" class="btn-outline" id="hud-wa-link">
+            WhatsApp Quote
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: Engineered Protection (Viscosity Science) -->
+      <div class="feature-card">
+        <div>
+          <div class="card-tag">Molecular Shear Stability &amp; Wear Guard</div>
+          <h3 class="card-title">Engineered <br>Protection</h3>
+          <p class="card-lead">
+            High-strength molecular film engineered for heavy industrial friction. Resists thermal breakdown, soot accumulation, and corrosive acid wear across thousands of punishing operating hours.
+          </p>
+          <div class="specs-pills-row">
+            <span class="spec-pill">Zero Viscosity Breakdown</span>
+            <span class="spec-pill">Extreme Pressure EP Additives</span>
+            <span class="spec-pill">Anti-Wear Detergents</span>
+            <span class="spec-pill">ASTM D4172 Tested</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="protection.html" class="btn-gold">Viscosity Science &rarr;</a>
+          <a href="protection.html#matcher-section" class="btn-outline">Interactive Oil Matcher</a>
+        </div>
+      </div>
+
+      <!-- Card 4: Keeping Engines Running (Heritage & Network) -->
+      <div class="feature-card">
+        <div>
+          <div class="card-tag">Authorised Distributor &amp; Network</div>
+          <h3 class="card-title">Keeping Engines <br>Running</h3>
+          <p class="card-lead">
+            Gandhi Oil Depot · Reliable lubricant logistics direct to workshops, fleet owners, and machine operators across Maharashtra.
+          </p>
+          <div class="metrics-mini-grid">
+            <div class="metric-box">
+              <div class="metric-val">3</div>
+              <div class="metric-lbl">Trusted Brands</div>
+              <div class="metric-sub">Motocoat, Finolube &amp; HPCL</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">8+</div>
+              <div class="metric-lbl">Product Categories</div>
+              <div class="metric-sub">Bikes, cars, autos, tractors &amp; JCBs</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">1L–210L</div>
+              <div class="metric-lbl">Pack Formats</div>
+              <div class="metric-sub">Retail cans, buckets, and bulk drums</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">100%</div>
+              <div class="metric-lbl">Genuine Guaranteed</div>
+              <div class="metric-sub">Refinery sealed with factory warranty</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="about.html" class="btn-gold">Read Our Heritage &rarr;</a>
+          <a href="dealer-enquiry.html" class="btn-outline">Dealer Enquiry Portal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       LUXURY FOOTER
+       ========================================================================= -->
+  <footer class="luxury-footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="brand-wrap" style="margin-bottom:16px;">
+          <img src="assets/logo.png" alt="J B TRADERS" class="brand-logo-img" style="height:38px;">
+          <div class="brand-text">
+            <span class="brand-name">J B Traders</span>
+            <span class="brand-sub">The Lube Expert · Gandhi Oil</span>
+          </div>
+        </div>
+        <p>
+          Authorised master distributor of Motocoat, Finolube, and HPCL genuine engine oils, tractor lubricants, and industrial greases.
+        </p>
+        <p style="font-size:12px;color:#ffd875;">
+          Depot: Sinhagad Road, Pune, Maharashtra · Helpline: +91 96043 13912
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">3D Experience Flagship</a></li>
+          <li><a href="liquid-gold.html">Liquid Gold Range</a></li>
+          <li><a href="protection.html">Protection &amp; Viscosity</a></li>
+          <li><a href="showroom.html">3D Product Showroom</a></li>
+          <li><a href="about.html">About J B Traders</a></li>
+          <li><a href="dealer-enquiry.html">Dealer Enquiry Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product Spectrum</h4>
+        <ul class="footer-links">
+          <li><a href="showroom.html">2-Wheeler 4T 20W40</a></li>
+          <li><a href="showroom.html">3-Wheeler Auto CNG</a></li>
+          <li><a href="showroom.html">4-Wheeler Synthetic 5W30</a></li>
+          <li><a href="showroom.html">JCB Heavy Fleet 15W40</a></li>
+          <li><a href="showroom.html">Tractor UTTO &amp; STOU</a></li>
+          <li><a href="showroom.html">Hydraulic 68 &amp; Greases</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Trade Helpline</h4>
+        <p><strong>Phone:</strong> <a href="tel:+919604313912" style="color:#ffd875;text-decoration:none;">+91 96043 13912</a></p>
+        <p><strong>Email:</strong> <a href="mailto:thelubeexpert999@gmail.com" style="color:#cbd5e1;text-decoration:none;">thelubeexpert999@gmail.com</a></p>
+        <p><strong>Operating Hours:</strong><br>Mon – Sat: 9:00 AM – 8:30 PM<br>Sunday: By Appointment</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 J B TRADERS (Gandhi Oil Hub). All Rights Reserved.</div>
+      <div>Authorised Distributor · 100% Factory Authenticity Seal</div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       THREE.JS SCRIPT & APPLICATION MODULE
+       ========================================================================= -->
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+    let canvas, scene, camera, renderer;
+    let gltfModel, modelPivot, canBodyMesh = null, canBodyTexture = null;
+    const modelCenterScaled = new THREE.Vector3();
+    const clock = new THREE.Clock();
+
+    let isDragging = false;
+    let prevMouseX = 0, prevMouseY = 0;
+    let rotationVelocityX = 0, rotationVelocityY = 0;
+
+    let targetMouseX = 0, targetMouseY = 0;
+    let mouseX = 0, mouseY = 0;
+
+    const sizes = { width: window.innerWidth, height: window.innerHeight };
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Background Shader Uniforms
+    let bgMaterial;
+    const shaderUniforms = {
+      uTime: { value: 0 },
+      uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+      uMouse: { value: new THREE.Vector2(0, 0) }
+    };
+
+    // Sparks
+    let sparkParticles;
+    const sparkCount = 360;
+    const sparkData = [];
+
+    // Product Specifications Catalog
+    const productCatalog = {
+      "2wheeler": {
+        name: "2 Wheeler 4T Oil",
+        grade: "4T 20W-40 SL / JASO MA2",
+        desc: "High-rpm motorcycle and scooter engine oil with friction modifier technology. Delivers smooth clutch engagement, rapid throttle response, and keeps air-cooled engines running cooler.",
+        visc: "10W-30 · 20W-40 · 20W-50",
+        pack: "1 Litre Slim Can",
+        adv: "Smooth Clutch & Thermal Shield",
+        scale: { x: 0.74, y: 0.88, z: 0.65 },
+        label: "assets/label_2wheeler.png"
+      },
+      "3wheeler": {
+        name: "3 Wheeler Auto Oil",
+        grade: "20W-40 CNG & 15W-40 DIESEL",
+        desc: "Extended drain commercial lubricant formulated for passenger autos running continuous daily stop-and-go shifts. Superior soot dispersion and clean spark plugs.",
+        visc: "15W-40 · 20W-40 CNG",
+        pack: "3 Litres Heavy Can",
+        adv: "Low Ash Deposit & High Mileage",
+        scale: { x: 0.88, y: 0.94, z: 0.82 },
+        label: "assets/label_3wheeler.png"
+      },
+      "4wheeler": {
+        name: "4 Wheeler Car Oil",
+        grade: "5W-30 API SN / FULL SYNTHETIC",
+        desc: "Advanced low-friction synthetic formulation for modern multi-valve petrol and turbo-diesel cars. Instant cold-start flow and maximum highway fuel economy.",
+        visc: "5W-30 · 10W-40 · 15W-40",
+        pack: "3.5 Litres Tech Can",
+        adv: "Zero Friction Cranking & Turbo Safe",
+        scale: { x: 0.92, y: 0.96, z: 0.88 },
+        label: "assets/label_4wheeler.png"
+      },
+      "jcb": {
+        name: "JCB & Earth Moving",
+        grade: "15W-40 CI-4 Heavy Duty Pack",
+        desc: "Extreme pressure diesel lubricant engineered for heavy earthmoving machinery operating under crushing payloads, high vibrations, and dusty quarry environments.",
+        visc: "15W-40 CI-4 · HYD 68 · UTTO",
+        pack: "5 Litres Heavy Duty Can",
+        adv: "Anti-Cavitation & Soot Control",
+        scale: { x: 1.0, y: 1.0, z: 1.0 },
+        label: "assets/label_jcb.png"
+      },
+      "tractor": {
+        name: "Tractor Oil & UTTO",
+        grade: "STOU 15W-40 & UTTO HYDRAULIC",
+        desc: "Universal tractor oil providing all-in-one protection across engine, transmission, hydraulic lift systems, and chatter-free wet brakes under harsh agricultural tilling.",
+        visc: "STOU 15W-40 · UTTO",
+        pack: "5 Litres Farm Can",
+        adv: "Wet Brake Chatter Elimination",
+        scale: { x: 1.05, y: 0.98, z: 1.05 },
+        label: "assets/label_tractor.png"
+      },
+      "industrial": {
+        name: "Industrial & Gear Oil",
+        grade: "HYD 32/46/68 & GEAR 90/140",
+        desc: "High-viscosity factory-grade lubricants and MP3 high-temperature greases. Resists foaming, protects bearings, and delivers 5000+ hours of continuous industrial uptime.",
+        visc: "HYD 32/46/68 · Gear 90/140",
+        pack: "5L / 20L Bucket / 210L Barrel",
+        adv: "Anti-Foam & Rust Oxidation Shield",
+        scale: { x: 1.02, y: 1.02, z: 1.0 },
+        label: "assets/label_industrial.png"
+      }
+    };
+
+    let targetScaleVec = new THREE.Vector3(1, 1, 1);
+    let activeProductId = 'jcb';
+    let viewportModelScale = 1;
+    const textureLoader = new THREE.TextureLoader();
+    const loadedTextures = {};
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      if (toast) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2400);
+      }
+    }
+
+    // Procedural Liquid Gold Caustic Wave Background Shader
+    function createBackgroundShader() {
+      const vertexShader = `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `;
+
+      const fragmentShader = `
+        varying vec2 vUv;
+        uniform float uTime;
+        uniform vec2 uResolution;
+        uniform vec2 uMouse;
+
+        void main() {
+          vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / uResolution.y;
+          float aspect = uResolution.x / uResolution.y;
+
+          float time = uTime * 0.09;
+
+          float angle1 = 0.55;
+          float angle2 = -0.72;
+          float angle3 = 1.15;
+
+          float freq1 = 2.2;
+          float freq2 = 3.0;
+          float freq3 = 3.8;
+
+          vec2 warpedUv = uv;
+          warpedUv.x += sin(uv.y * 2.4 + time * 0.22) * 0.35;
+          warpedUv.y += cos(uv.x * 2.4 - time * 0.16) * 0.35;
+
+          warpedUv.x += sin(uv.y * 1.3 - time * 0.12) * 0.22;
+          warpedUv.y += cos(uv.x * 1.3 + time * 0.19) * 0.22;
+
+          vec2 mouseShift = vec2(uMouse.x * aspect * 0.04, uMouse.y * 0.04);
+          warpedUv += mouseShift;
+
+          vec2 dir1 = vec2(cos(angle1), sin(angle1));
+          vec2 dir2 = vec2(cos(angle2), sin(angle2));
+          vec2 dir3 = vec2(cos(angle3), sin(angle3));
+
+          float w1 = sin(dot(warpedUv, dir1) * freq1 + time * 1.1);
+          float w2 = cos(dot(warpedUv, dir2) * freq2 - time * 1.3 + w1 * 0.4);
+          float w3 = sin(dot(warpedUv, dir3) * freq3 + time * 1.7 + w2 * 0.5);
+
+          float waveField = w1 * 0.50 + w2 * 0.35 + w3 * 0.15;
+          float wideSheen = pow(max(0.0, 1.0 - abs(waveField - 0.1)), 2.6);
+          float crispSpecular = pow(max(0.0, 1.0 - abs(waveField - 0.15)), 8.5);
+          float crest = wideSheen * 0.5 + crispSpecular * 0.95;
+
+          vec3 c0_shadow = vec3(0.0012, 0.0008, 0.0004);
+          vec3 c0_wave1  = vec3(0.120, 0.075, 0.015);
+          vec3 c0_wave2  = vec3(0.065, 0.038, 0.008);
+          vec3 c0_crest  = vec3(0.55, 0.42, 0.18);
+
+          vec3 color = c0_shadow;
+          color = mix(color, c0_wave2, smoothstep(-0.6, 0.2, waveField));
+          color = mix(color, c0_wave1, smoothstep(0.0, 0.8, waveField));
+          color += c0_crest * crest * 1.5;
+
+          float vignette = 1.0 - dot(uv, uv) * 0.16;
+          color *= vignette;
+
+          float filamentAlpha = wideSheen * 0.28 + crispSpecular * 0.8;
+          float backgroundAlpha = clamp(filamentAlpha, 0.035, 0.92);
+          gl_FragColor = vec4(color, backgroundAlpha);
+        }
+      `;
+
+      bgMaterial = new THREE.ShaderMaterial({
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        uniforms: shaderUniforms,
+        transparent: true,
+        depthWrite: false,
+        depthTest: false
+      });
+
+      const bgGeometry = new THREE.PlaneGeometry(36, 36);
+      const bgMesh = new THREE.Mesh(bgGeometry, bgMaterial);
+      bgMesh.position.set(0.0, 0.0, -8.0);
+      bgMesh.renderOrder = -10;
+      camera.add(bgMesh);
+    }
+
+    function createSparkTexture() {
+      const c = document.createElement('canvas');
+      c.width = 16; c.height = 16;
+      const ctx = c.getContext('2d');
+      const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      gradient.addColorStop(0.3, 'rgba(245, 200, 105, 0.9)');
+      gradient.addColorStop(0.7, 'rgba(212, 144, 38, 0.35)');
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 16, 16);
+      return new THREE.CanvasTexture(c);
+    }
+
+    function createSparks() {
+      const geometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(sparkCount * 3);
+      const colors = new Float32Array(sparkCount * 3);
+
+      for (let i = 0; i < sparkCount; i++) {
+        const x = (Math.random() - 0.5) * 6.5;
+        const y = (Math.random() - 0.5) * 5.0 - 0.2;
+        const z = (Math.random() - 0.5) * 6.5;
+        positions[i * 3] = x;
+        positions[i * 3 + 1] = y;
+        positions[i * 3 + 2] = z;
+
+        if (Math.random() < 0.75) {
+          colors[i * 3] = 0.98;
+          colors[i * 3 + 1] = 0.75 + Math.random() * 0.15;
+          colors[i * 3 + 2] = 0.15 + Math.random() * 0.15;
+        } else {
+          colors[i * 3] = 1.0;
+          colors[i * 3 + 1] = 0.95;
+          colors[i * 3 + 2] = 0.85;
+        }
+
+        sparkData.push({
+          speedX: (Math.random() - 0.5) * 0.35,
+          speedY: 0.12 + Math.random() * 0.28,
+          speedZ: (Math.random() - 0.5) * 0.35,
+          swaySpeed: 0.6 + Math.random() * 1.4,
+          swayRadius: 0.06 + Math.random() * 0.14,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const material = new THREE.PointsMaterial({
+        size: 0.026,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.90,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        map: createSparkTexture()
+      });
+
+      sparkParticles = new THREE.Points(geometry, material);
+      scene.add(sparkParticles);
+    }
+
+    let baseScale = 1.0;
+
+    function getModelPositionX() {
+      if (sizes.width > 1024) {
+        return Math.min(4.7, 2.0 + (sizes.width - 1024) * 0.0065);
+      }
+      return sizes.width > 640
+        ? -1.0 + Math.min(1, (sizes.width - 640) / 384) * 0.55
+        : 0.0;
+    }
+
+    function setupCanScene(gltf) {
+      gltfModel = gltf.scene;
+      modelPivot.add(gltfModel);
+
+      gltfModel.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+          if (child.name === 'JB_Traders_Can_Body' || (child.material && child.material.name === 'JB_Traders_Molded_HDPE')) {
+            canBodyMesh = child;
+            canBodyTexture = child.material && child.material.map;
+          }
+          if (child.material) {
+            child.material.roughness = 0.28;
+            child.material.metalness = 0.04;
+            if (child.material.map) {
+              child.material.map.anisotropy = 16;
+              child.material.map.flipY = false;
+            }
+          }
+        }
+      });
+
+      // Fit can inside hero viewport with breathing room below navbar
+      const boxInitial = new THREE.Box3().setFromObject(gltfModel);
+      const sizeInitial = boxInitial.getSize(new THREE.Vector3());
+      const maxDim = Math.max(sizeInitial.x, sizeInitial.y, sizeInitial.z);
+      // Reserve clear breathing room around the full 5 L pack at every desktop height.
+      baseScale = 2.20 / (maxDim > 0.0001 ? maxDim : 1);
+      gltfModel.scale.setScalar(baseScale);
+      targetScaleVec.set(
+        baseScale * viewportModelScale,
+        baseScale * viewportModelScale,
+        baseScale * viewportModelScale
+      );
+
+      gltfModel.updateMatrixWorld(true);
+
+      const boxScaled = new THREE.Box3().setFromObject(gltfModel);
+      const centerScaled = boxScaled.getCenter(new THREE.Vector3());
+      modelCenterScaled.copy(centerScaled);
+      gltfModel.position.sub(centerScaled);
+
+      // Model Pivot positioned safely on right side, with Y offset keeping cap well below navbar
+      const isDesktop = sizes.width > 1024;
+      modelPivot.position.set(getModelPositionX(), isDesktop ? -0.06 : -1.2, 0);
+
+      // INITIAL ORIENTATION: Front label facing forward towards visitor!
+      modelPivot.rotation.y = -0.10;
+      modelPivot.rotation.x = 0.02;
+
+      // Preload product textures
+      Object.keys(productCatalog).forEach(id => {
+        const texSrc = (window.JB_PRODUCT_TEXTURES && window.JB_PRODUCT_TEXTURES[id])
+          ? window.JB_PRODUCT_TEXTURES[id]
+          : productCatalog[id].label;
+        const tex = textureLoader.load(texSrc, (t) => {
+          t.flipY = false;
+          t.needsUpdate = true;
+        });
+        tex.flipY = false;
+        loadedTextures[id] = tex;
+      });
+
+      // Ensure initial JCB product texture is bound
+      if (window.selectProduct) {
+        window.selectProduct('jcb');
+      }
+
+      showToast("J B TRADERS 3D Can Loaded");
+    }
+
+    function loadCanModel() {
+      modelPivot = new THREE.Group();
+      scene.add(modelPivot);
+
+      const loader = new GLTFLoader();
+      loader.load(
+        'assets/jb_traders_can_model_new.glb',
+        (gltf) => setupCanScene(gltf),
+        undefined,
+        (error) => {
+          console.error('Unable to load the 3D can model.', error);
+          showToast('3D Can Failed to Load');
+        }
+      );
+    }
+
+    function setupInteraction() {
+      // Interactive pointer drag controls on canvas for full 360 orbit
+      canvas.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        prevMouseX = e.clientX;
+        prevMouseY = e.clientY;
+        rotationVelocityX = 0;
+        rotationVelocityY = 0;
+      });
+
+      window.addEventListener('pointermove', (e) => {
+        targetMouseX = (e.clientX / sizes.width) * 2 - 1;
+        targetMouseY = (e.clientY / sizes.height) * 2 - 1;
+
+        if (!isDragging || !modelPivot) return;
+        const deltaX = e.clientX - prevMouseX;
+        const deltaY = e.clientY - prevMouseY;
+        prevMouseX = e.clientX;
+        prevMouseY = e.clientY;
+
+        rotationVelocityY = deltaX * 0.007;
+        rotationVelocityX = deltaY * 0.005;
+
+        modelPivot.rotation.y += rotationVelocityY;
+        modelPivot.rotation.x = Math.max(-0.4, Math.min(0.4, modelPivot.rotation.x + rotationVelocityX));
+      });
+
+      window.addEventListener('pointerup', () => {
+        isDragging = false;
+      });
+      window.addEventListener('pointercancel', () => {
+        isDragging = false;
+      });
+    }
+
+    // Dynamic Product Switcher Function
+    window.selectProduct = function(prodId) {
+      if (!productCatalog[prodId]) return;
+      const data = productCatalog[prodId];
+      activeProductId = prodId;
+
+      document.querySelectorAll('.prod-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.getAttribute('data-prod') === prodId);
+      });
+
+      const elName = document.getElementById('hud-name');
+      if (elName) elName.textContent = data.name;
+      const elGrade = document.getElementById('hud-grade');
+      if (elGrade) elGrade.textContent = data.grade;
+      const elDesc = document.getElementById('hud-desc');
+      if (elDesc) elDesc.textContent = data.desc;
+      const elVisc = document.getElementById('hud-visc');
+      if (elVisc) elVisc.textContent = data.visc;
+      const elPack = document.getElementById('hud-pack');
+      if (elPack) elPack.textContent = data.pack;
+
+      const waMsg = encodeURIComponent(`Hello J B Traders, I am interested in dealer pricing for ${data.name} (${data.grade}).`);
+      const waLink = document.getElementById('hud-wa-link');
+      if (waLink) waLink.href = `https://wa.me/919604313912?text=${waMsg}`;
+
+      // Update 3D Can Scale dynamically
+      targetScaleVec.set(
+        baseScale * data.scale.x * viewportModelScale,
+        baseScale * data.scale.y * viewportModelScale,
+        baseScale * data.scale.z * viewportModelScale
+      );
+
+      // Update Texture dynamically
+      if (canBodyMesh && canBodyMesh.material) {
+        if (!loadedTextures[prodId]) {
+          const texSrc = (window.JB_PRODUCT_TEXTURES && window.JB_PRODUCT_TEXTURES[prodId])
+            ? window.JB_PRODUCT_TEXTURES[prodId]
+            : data.label;
+          const tex = textureLoader.load(texSrc, (t) => {
+            t.flipY = false;
+            t.needsUpdate = true;
+          });
+          tex.flipY = false;
+          loadedTextures[prodId] = tex;
+        }
+        const activeTex = prodId === 'jcb' && canBodyTexture ? canBodyTexture : loadedTextures[prodId];
+        activeTex.flipY = false;
+        canBodyMesh.material.map = activeTex;
+        canBodyMesh.material.needsUpdate = true;
+      }
+
+      showToast(`Selected ${data.name}`);
+    };
+
+    // 360 Spin Function
+    window.triggerCanSpin = function() {
+      if (modelPivot) {
+        const startRot = modelPivot.rotation.y;
+        const startTime = performance.now();
+        const duration = 1200;
+
+        function spin(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(1, elapsed / duration);
+          const ease = 0.5 - 0.5 * Math.cos(progress * Math.PI);
+          modelPivot.rotation.y = startRot + Math.PI * 2 * ease;
+          if (progress < 1) {
+            requestAnimationFrame(spin);
+          }
+        }
+        requestAnimationFrame(spin);
+        showToast("360° Packaging Inspection");
+      }
+    };
+
+    // Partner Form Handler -> WhatsApp
+    window.handleFormSubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('form-name').value;
+      const phone = document.getElementById('form-phone').value;
+      const cat = document.getElementById('form-cat').value;
+      const vol = document.getElementById('form-vol').value;
+
+      const waMsg = `Hello J B Traders (Gandhi Oil), my workshop name is ${name} (${phone}). I would like to request wholesale dealer rates for ${cat} with estimated monthly volume of ${vol}.`;
+      const waUrl = `https://wa.me/919604313912?text=${encodeURIComponent(waMsg)}`;
+      window.open(waUrl, '_blank');
+      showToast('Opening WhatsApp Dealer Enquiry...');
+    };
+
+    // Mobile Drawer Controls
+    window.openMobileDrawer = function() {
+      document.getElementById('mobileDrawer')?.classList.add('open');
+      document.getElementById('drawerOverlay')?.classList.add('open');
+      document.querySelector('.mobile-menu-btn')?.setAttribute('aria-expanded', 'true');
+    };
+    window.closeMobileDrawer = function(event) {
+      event?.preventDefault();
+      event?.stopPropagation();
+      document.getElementById('mobileDrawer')?.classList.remove('open');
+      document.getElementById('drawerOverlay')?.classList.remove('open');
+      document.querySelector('.mobile-menu-btn')?.setAttribute('aria-expanded', 'false');
+    };
+
+    function onWindowResize() {
+      const canvasWrap = canvas && canvas.parentElement;
+      sizes.width = canvasWrap ? canvasWrap.clientWidth : window.innerWidth;
+      sizes.height = canvasWrap ? canvasWrap.clientHeight : window.innerHeight;
+      if (!sizes.width || !sizes.height) return;
+
+      camera.aspect = sizes.width / sizes.height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(sizes.width, sizes.height, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 640 ? 1.5 : 2));
+      viewportModelScale = sizes.width > 1024
+        ? Math.min(1, 1632 / sizes.width)
+        : Math.min(1, 420 / sizes.height);
+
+      if (shaderUniforms) {
+        shaderUniforms.uResolution.value.set(sizes.width, sizes.height);
+      }
+
+      if (modelPivot) {
+        const isDesktop = sizes.width > 1024;
+        modelPivot.position.x = getModelPositionX();
+        modelPivot.position.y = isDesktop ? -0.06 : -1.2;
+      }
+
+      if (gltfModel) {
+        const productScale = productCatalog[activeProductId].scale;
+        targetScaleVec.set(
+          baseScale * productScale.x * viewportModelScale,
+          baseScale * productScale.y * viewportModelScale,
+          baseScale * productScale.z * viewportModelScale
+        );
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const deltaTime = clock.getDelta();
+
+      mouseX += (targetMouseX - mouseX) * 0.05;
+      mouseY += (targetMouseY - mouseY) * 0.05;
+
+      if (!isDragging && modelPivot) {
+        rotationVelocityY *= 0.94;
+        rotationVelocityX *= 0.94;
+        modelPivot.rotation.y += rotationVelocityY;
+        modelPivot.rotation.x = Math.max(-0.4, Math.min(0.4, modelPivot.rotation.x + rotationVelocityX));
+
+        // Keep the label facing the visitor until they deliberately drag or spin the pack.
+      }
+
+      // Smooth scale interpolation
+      if (gltfModel) {
+        gltfModel.scale.lerp(targetScaleVec, 0.08);
+        gltfModel.position.set(
+          -modelCenterScaled.x * gltfModel.scale.x / baseScale,
+          -modelCenterScaled.y * gltfModel.scale.y / baseScale,
+          -modelCenterScaled.z * gltfModel.scale.z / baseScale
+        );
+      }
+
+      // Sparks simulation
+      if (sparkParticles && !prefersReducedMotion) {
+        const positions = sparkParticles.geometry.attributes.position.array;
+        const time = clock.getElapsedTime();
+
+        for (let i = 0; i < sparkCount; i++) {
+          const idx = i * 3;
+          const data = sparkData[i];
+          positions[idx]     += data.speedX * deltaTime;
+          positions[idx + 1] += data.speedY * deltaTime;
+          positions[idx + 2] += data.speedZ * deltaTime;
+
+          positions[idx]     += Math.sin(time * data.swaySpeed + data.phase) * data.swayRadius * deltaTime;
+          positions[idx + 2] += Math.cos(time * data.swaySpeed + data.phase) * data.swayRadius * deltaTime;
+
+          if (positions[idx + 1] > 2.8 || Math.abs(positions[idx]) > 3.5 || Math.abs(positions[idx + 2]) > 3.5) {
+            positions[idx + 1] = -2.4;
+            positions[idx]     = (Math.random() - 0.5) * 3.0;
+            positions[idx + 2] = (Math.random() - 0.5) * 3.0;
+          }
+        }
+        sparkParticles.geometry.attributes.position.needsUpdate = true;
+      }
+
+      if (shaderUniforms) {
+        shaderUniforms.uTime.value = prefersReducedMotion ? 0 : clock.getElapsedTime();
+        shaderUniforms.uMouse.value.set(mouseX, -mouseY);
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    function init() {
+      canvas = document.querySelector('#webgl');
+      if (!canvas) return;
+
+      const canvasWrap = canvas.parentElement;
+      sizes.width = canvasWrap.clientWidth || window.innerWidth;
+      sizes.height = canvasWrap.clientHeight || window.innerHeight;
+
+      scene = new THREE.Scene();
+      scene.background = null;
+
+      camera = new THREE.PerspectiveCamera(40, sizes.width / sizes.height, 0.1, 100);
+      camera.position.set(0, 0, 4.8);
+      scene.add(camera);
+
+      createBackgroundShader();
+
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance"
+      });
+      renderer.setSize(sizes.width, sizes.height, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 640 ? 1.5 : 2));
+
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.6;
+
+      // Studio Lighting
+      const ambientLight = new THREE.AmbientLight('#fff7e6', 1.2);
+      scene.add(ambientLight);
+
+      const mainLight = new THREE.DirectionalLight('#fff2d6', 3.2);
+      mainLight.position.set(4, 5, 4);
+      mainLight.castShadow = true;
+      scene.add(mainLight);
+
+      const goldRimLight = new THREE.DirectionalLight('#e5a93c', 2.8);
+      goldRimLight.position.set(-5, -2, -3);
+      scene.add(goldRimLight);
+
+      const topLight = new THREE.PointLight('#ffffff', 1.6, 12);
+      topLight.position.set(0, 4, 2);
+      scene.add(topLight);
+
+      createSparks();
+      loadCanModel();
+      setupInteraction();
+
+      window.addEventListener('resize', onWindowResize);
+      if ('ResizeObserver' in window) {
+        new ResizeObserver(onWindowResize).observe(canvasWrap);
+      }
+      onWindowResize();
+      animate();
+    }
+
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
 </body>
 </html>

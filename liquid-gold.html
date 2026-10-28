@@ -7,10 +7,10 @@
   <meta name="description" content="Explore Liquid Gold by J B TRADERS (Gandhi Oil). Genuine engine oils, tractor lubricants, JCB earthmoving fluids and industrial grease at wholesale dealer rates in Pune.">
   <link rel="icon" type="image/png" href="assets/logo.png">
 
-  <!-- Google Fonts: Italiana, Outfit, Space Grotesk -->
+  <!-- Google Fonts: Poppins, Poppins, Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* Reset & Base Tokens */
@@ -28,7 +28,7 @@
         radial-gradient(circle at 20% 25%, rgba(229, 169, 60, 0.08) 0%, transparent 45%),
         radial-gradient(circle at 80% 70%, rgba(229, 169, 60, 0.06) 0%, transparent 50%),
         radial-gradient(circle at 50% 95%, rgba(200, 140, 40, 0.05) 0%, transparent 40%);
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #f1f5f9;
       min-height: 100vh;
       overflow-x: hidden;
@@ -199,7 +199,7 @@
       background: rgba(229, 169, 60, 0.15);
       border: 1px solid rgba(229, 169, 60, 0.45);
       color: #f7ce76;
-      font-family: 'Space Grotesk', monospace;
+      font-family: 'Poppins', monospace;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
@@ -218,7 +218,7 @@
     }
 
     .hero-title {
-      font-family: 'Italiana', serif;
+      font-family: 'Poppins', serif;
       font-size: 72px;
       line-height: 1.05;
       font-weight: 400;
@@ -318,7 +318,7 @@
       border-color: rgba(229, 169, 60, 0.55);
     }
     .stat-num {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-size: 36px;
       font-weight: 700;
       color: #ffd875;
@@ -337,7 +337,7 @@
       margin-bottom: 36px;
     }
     .section-subtitle {
-      font-family: 'Space Grotesk', monospace;
+      font-family: 'Poppins', monospace;
       font-size: 11px;
       letter-spacing: 2.5px;
       text-transform: uppercase;
@@ -345,7 +345,7 @@
       margin-bottom: 8px;
     }
     .section-headline {
-      font-family: 'Italiana', serif;
+      font-family: 'Poppins', serif;
       font-size: 44px;
       color: #ffffff;
       letter-spacing: 0.5px;
@@ -354,21 +354,42 @@
     /* Product Grid */
     .card-img-box {
       width: 100%;
-      height: 200px;
+      height: clamp(180px, 18vw, 220px);
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 14px 0 16px 0;
-      background: radial-gradient(circle at 50% 50%, rgba(229, 169, 60, 0.08) 0%, rgba(5, 7, 10, 0.6) 80%);
+      background: radial-gradient(ellipse at 50% 72%, rgba(255, 255, 255, 0.06), transparent 58%), #08090d;
       border-radius: 14px;
-      border: 1px solid rgba(229, 169, 60, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       padding: 12px;
+      overflow: hidden;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .card-img-box[data-category="2wheeler"] {
+      background: radial-gradient(ellipse at 50% 48%, rgba(130, 23, 39, 0.36), transparent 72%), #090609;
+    }
+    .card-img-box[data-category="3wheeler"] {
+      background: radial-gradient(ellipse at 50% 48%, rgba(31, 74, 139, 0.34), transparent 72%), #07090d;
+    }
+    .card-img-box[data-category="4wheeler"] {
+      background: radial-gradient(ellipse at 50% 48%, rgba(28, 99, 60, 0.32), transparent 72%), #070b09;
+    }
+    .card-img-box[data-category="jcb"] {
+      background: radial-gradient(ellipse at 50% 48%, rgba(176, 86, 19, 0.36), transparent 72%), #0b0805;
+    }
+    .card-img-box[data-category="tractor"] {
+      background: radial-gradient(ellipse at 50% 48%, rgba(91, 29, 131, 0.38), transparent 72%), #09060d;
+    }
+    .card-img-box[data-category="industrial"] {
+      background: radial-gradient(ellipse at 50% 48%, rgba(16, 105, 117, 0.36), transparent 72%), #050a0c;
     }
     .card-product-img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.85));
+      display: block;
+      filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.7));
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .product-card:hover .card-product-img {
@@ -409,7 +430,7 @@
       background: rgba(229, 169, 60, 0.15);
       border: 1px solid rgba(229, 169, 60, 0.4);
       border-radius: 9999px;
-      font-family: 'Space Grotesk', monospace;
+      font-family: 'Poppins', monospace;
       font-size: 11px;
       font-weight: 700;
       color: #ffd875;
@@ -455,7 +476,7 @@
       position: relative;
     }
     .chem-num {
-      font-family: 'Space Grotesk', monospace;
+      font-family: 'Poppins', monospace;
       font-size: 12px;
       font-weight: 700;
       color: #ffd875;
@@ -487,7 +508,7 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
     }
     .banner-text h3 {
-      font-family: 'Italiana', serif;
+      font-family: 'Poppins', serif;
       font-size: 38px;
       color: #ffffff;
       margin-bottom: 12px;
@@ -517,7 +538,7 @@
       margin-bottom: 50px;
     }
     .footer-col h4 {
-      font-family: 'Space Grotesk', monospace;
+      font-family: 'Poppins', monospace;
       font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -556,7 +577,7 @@
       color: #64748b;
     }
 
-    
+
     /* Mobile Menu Toggle Button */
     .mobile-menu-btn {
       display: none;
@@ -695,12 +716,61 @@
       .footer-content { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
     }
-  </style>
+
+    html { overflow-x: clip; }
+    body { width: 100%; overflow-x: hidden; }
+    img, svg { max-width: 100%; }
+    button, input, select, textarea { font: inherit; }
+    :focus-visible { outline: 2px solid #ffd875; outline-offset: 3px; }
+
+    @media (max-width: 1024px) {
+      .header-nav { display: none; }
+      .mobile-menu-btn { display: inline-flex; }
+    }
+
+    @media (max-width: 640px) {
+      .main-header { min-height: 64px; padding: 8px 14px; gap: 8px; }
+      .brand-wrap { min-width: 0; gap: 8px; }
+      .brand-logo-img { height: 38px; max-width: 42px; }
+      .brand-text { min-width: 0; }
+      .brand-name { font-size: 12px; letter-spacing: 2px; }
+      .brand-sub { font-size: 8px; letter-spacing: 1px; }
+      .header-actions { flex-shrink: 0; gap: 8px; }
+      .contact-btn { padding: 8px 10px; font-size: 9px; letter-spacing: 0.8px; }
+      .mobile-nav-drawer { max-width: calc(100vw - 16px); overflow-y: auto; }
+      .page-wrapper { width: 100%; padding-left: 14px; padding-right: 14px; }
+      .product-card, .feature-card, .dealer-card, .detail-hud-card { min-width: 0; }
+      .form-row { grid-template-columns: minmax(0, 1fr); }
+      .form-input, input, select, textarea { min-width: 0; max-width: 100%; }
+    }
+
+    @media (max-width: 380px) {
+      .main-header { padding-left: 10px; padding-right: 10px; }
+      .brand-wrap { gap: 6px; }
+      .brand-logo-img { height: 34px; max-width: 36px; }
+      .brand-name { font-size: 11px; letter-spacing: 1.5px; }
+      .brand-sub { font-size: 7px; letter-spacing: 0.7px; }
+      .header-actions { gap: 6px; }
+      .contact-btn { width: 40px; height: 40px; padding: 0; justify-content: center; font-size: 0; }
+      .contact-btn::before { content: "Call"; font-size: 10px; letter-spacing: 0; }
+      .contact-btn .btn-circle { display: none; }
+      .page-wrapper { padding-left: 12px; padding-right: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+</style>
 </head>
 <body>
 
   <!-- Mobile Drawer Overlay -->
-  <div class="mobile-drawer-overlay" id="drawerOverlay" onclick="closeMobileDrawer()"></div>
+  <div class="mobile-drawer-overlay" id="drawerOverlay" onclick="closeMobileDrawer(event)"></div>
 
   <!-- Mobile Nav Drawer -->
   <aside class="mobile-nav-drawer" id="mobileDrawer">
@@ -755,12 +825,15 @@
     </nav>
 
     <div class="header-actions">
-      <a href="https://wa.me/919604313912?text=Hello%20J%20B%20Traders,%20I%20would%20like%20to%20enquire%20about%20Liquid%20Gold%20lubricant%20pricing." target="_blank" class="whatsapp-header-btn" title="Chat on WhatsApp">
+      <a href="https://wa.me/919604313912?text=Hello%20J%20B%20Traders,%20I%20would%20like%20to%20enquire%20about%20Liquid%20Gold%20lubricant%20pricing." target="_blank" class="whatsapp-header-btn" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.19-.09-1.1-.54-1.27-.6-.17-.06-.3-.09-.43.1-.13.19-.49.6-.6.73-.11.13-.23.14-.42.05-.19-.1-.8-.3-1.53-.95-.57-.51-.95-1.13-1.06-1.32-.11-.19-.01-.29.08-.38.08-.09.19-.23.29-.35.1-.11.13-.19.19-.32.06-.13.03-.24-.02-.34-.05-.1-.43-1.04-.59-1.43-.16-.38-.32-.33-.43-.33-.11 0-.24-.01-.36-.01-.13 0-.34.05-.51.24-.18.19-.68.66-.68 1.62s.7 1.88.79 2c.1.13 1.37 2.1 3.32 2.94.46.2.83.32 1.11.41.47.15.89.13 1.23.08.38-.06 1.1-.45 1.25-.89.16-.43.16-.81.11-.89-.05-.08-.17-.13-.36-.23z"/></svg>
       </a>
-      <a href="tel:+919604313912" class="contact-btn">
+      <a href="tel:+919604313912" class="contact-btn" aria-label="Call helpline">
         Call Helpline <span class="btn-circle"></span>
       </a>
+      <button class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Open Navigation Menu" aria-expanded="false">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
     </div>
   </header>
 
@@ -827,7 +900,7 @@
               <span class="prod-grade-badge">4T 20W-40 / 10W-30</span>
               <span style="font-size:11px;color:#94a3b8;">1L / 900ml</span>
             </div>
-            <div class="card-img-box">
+            <div class="card-img-box" data-category="2wheeler">
               <img src="assets/products/2-wheeler-4t-1l.png" alt="2-Wheeler 4T Engine Oil" class="card-product-img" loading="lazy">
             </div>
             <div class="prod-card-title">2-Wheeler Engine Oil</div>
@@ -848,7 +921,7 @@
               <span class="prod-grade-badge">20W-40 / 15W-40</span>
               <span style="font-size:11px;color:#94a3b8;">3L / 4L</span>
             </div>
-            <div class="card-img-box">
+            <div class="card-img-box" data-category="3wheeler">
               <img src="assets/products/3-wheeler-auto-3l.png" alt="Commercial 3-Wheeler Auto Engine Oil" class="card-product-img" loading="lazy">
             </div>
             <div class="prod-card-title">Commercial 3-Wheeler</div>
@@ -869,7 +942,7 @@
               <span class="prod-grade-badge">5W-30 / 10W-40</span>
               <span style="font-size:11px;color:#94a3b8;">3.5L / 5L</span>
             </div>
-            <div class="card-img-box">
+            <div class="card-img-box" data-category="4wheeler">
               <img src="assets/products/4-wheeler-car-3-5l.png" alt="Passenger Car Synthetic Engine Oil" class="card-product-img" loading="lazy">
             </div>
             <div class="prod-card-title">Passenger Car Synthetic</div>
@@ -890,7 +963,7 @@
               <span class="prod-grade-badge">15W-40 CI-4</span>
               <span style="font-size:11px;color:#94a3b8;">5L / 20L / 210L</span>
             </div>
-            <div class="card-img-box">
+            <div class="card-img-box" data-category="jcb">
               <img src="assets/products/jcb-heavy-fleet-5l.png" alt="JCB &amp; Earthmoving Heavy Fleet Oil" class="card-product-img" loading="lazy">
             </div>
             <div class="prod-card-title">JCB &amp; Earthmoving Fleet</div>
@@ -911,7 +984,7 @@
               <span class="prod-grade-badge">UTTO 15W40 / STOU</span>
               <span style="font-size:11px;color:#94a3b8;">5L / 10L / 20L</span>
             </div>
-            <div class="card-img-box">
+            <div class="card-img-box" data-category="tractor">
               <img src="assets/products/tractor-utto-5l.png" alt="Tractor UTTO Oil" class="card-product-img" loading="lazy">
             </div>
             <div class="prod-card-title">Tractor Oil &amp; Hydraulics</div>
@@ -932,7 +1005,7 @@
               <span class="prod-grade-badge">HYD 68 / MP3 / AP3</span>
               <span style="font-size:11px;color:#94a3b8;">26L / 210L Barrel</span>
             </div>
-            <div class="card-img-box">
+            <div class="card-img-box" data-category="industrial">
               <img src="assets/products/industrial-fluids-hyd68-5l.png" alt="Industrial Fluids HYD 68 &amp; Grease" class="card-product-img" loading="lazy">
             </div>
             <div class="prod-card-title">Industrial Fluids &amp; Grease</div>
@@ -1056,10 +1129,16 @@
     function openMobileDrawer() {
       document.getElementById('mobileDrawer')?.classList.add('open');
       document.getElementById('drawerOverlay')?.classList.add('open');
+      var btn = document.querySelector('.mobile-menu-btn');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
     }
-    function closeMobileDrawer() {
+    function closeMobileDrawer(event) {
+      event?.preventDefault();
+      event?.stopPropagation();
       document.getElementById('mobileDrawer')?.classList.remove('open');
       document.getElementById('drawerOverlay')?.classList.remove('open');
+      var btn = document.querySelector('.mobile-menu-btn');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
     }
   </script>
 
