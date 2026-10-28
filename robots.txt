@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jb-traders.vercel.app/sitemap.xml
