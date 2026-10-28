@@ -25,9 +25,9 @@
     body {
       background-color: #05070a;
       background-image:
-        radial-gradient(circle at 15% 20%, rgba(229, 169, 60, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 85% 65%, rgba(229, 169, 60, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 50% 90%, rgba(200, 140, 40, 0.05) 0%, transparent 40%);
+        radial-gradient(circle at 20% 25%, rgba(229, 169, 60, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(229, 169, 60, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 95%, rgba(200, 140, 40, 0.05) 0%, transparent 40%);
       font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #f1f5f9;
       min-height: 100vh;
@@ -352,6 +352,29 @@
     }
 
     /* Product Grid */
+    .card-img-box {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 14px 0 16px 0;
+      background: radial-gradient(circle at 50% 50%, rgba(229, 169, 60, 0.08) 0%, rgba(5, 7, 10, 0.6) 80%);
+      border-radius: 14px;
+      border: 1px solid rgba(229, 169, 60, 0.15);
+      padding: 12px;
+    }
+    .card-product-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.85));
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card:hover .card-product-img {
+      transform: scale(1.06);
+    }
+
     .product-cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -533,6 +556,126 @@
       color: #64748b;
     }
 
+    
+    /* Mobile Menu Toggle Button */
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      background: rgba(14, 18, 26, 0.85);
+      border: 1px solid rgba(229, 169, 60, 0.4);
+      border-radius: 10px;
+      color: #ffd875;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      background: rgba(229, 169, 60, 0.15);
+      border-color: #ffd875;
+    }
+    .mobile-menu-btn svg {
+      width: 22px; height: 22px;
+    }
+
+    /* Mobile Drawer */
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 290px;
+      height: 100vh;
+      background: rgba(10, 13, 20, 0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-left: 1px solid rgba(229, 169, 60, 0.35);
+      z-index: 2000;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -15px 0 40px rgba(0, 0, 0, 0.9);
+    }
+    .mobile-nav-drawer.open {
+      right: 0;
+    }
+    .mobile-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .mobile-drawer-close {
+      background: transparent;
+      border: none;
+      color: #ffd875;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .mobile-nav-link {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.2s;
+    }
+    .mobile-nav-link.active-nav, .mobile-nav-link:hover {
+      color: #0b0c10;
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      border-color: #f7ce76;
+    }
+    .mobile-drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .drawer-action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.25s;
+    }
+    .drawer-wa {
+      background: #25d366;
+      color: #0b0c10;
+    }
+    .drawer-call {
+      background: rgba(229, 169, 60, 0.15);
+      border: 1px solid rgba(229, 169, 60, 0.4);
+      color: #ffd875;
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .main-header { padding: 16px 20px; }
@@ -555,6 +698,41 @@
   </style>
 </head>
 <body>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer-overlay" id="drawerOverlay" onclick="closeMobileDrawer()"></div>
+
+  <!-- Mobile Nav Drawer -->
+  <aside class="mobile-nav-drawer" id="mobileDrawer">
+    <div>
+      <div class="mobile-drawer-header">
+        <div class="brand-text">
+          <span class="brand-name">J B Traders</span>
+          <span class="brand-sub">The Lube Expert · Gandhi Oil</span>
+        </div>
+        <button class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Close Navigation">✕</button>
+      </div>
+
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">HOME</a>
+        <a href="showroom.html" class="mobile-nav-link">PRODUCT SHOWROOM</a>
+        <a href="liquid-gold.html" class="mobile-nav-link active-nav">LIQUID GOLD RANGE</a>
+        <a href="protection.html" class="mobile-nav-link">VISCOSITY SCIENCE</a>
+        <a href="about.html" class="mobile-nav-link">ABOUT US</a>
+        <a href="dealer-enquiry.html" class="mobile-nav-link">DEALER ENQUIRY</a>
+      </nav>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <a href="https://wa.me/919604313912?text=Hello%20J%20B%20Traders,%20I%20am%20inquiring%20about%20dealer%20pricing." target="_blank" class="drawer-action-btn drawer-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.19-.09-1.1-.54-1.27-.6-.17-.06-.3-.09-.43.1-.13.19-.49.6-.6.73-.11.13-.23.14-.42.05-.19-.1-.8-.3-1.53-.95-.57-.51-.95-1.13-1.06-1.32-.11-.19-.01-.29.08-.38.08-.09.19-.23.29-.35.1-.11.13-.19.19-.32.06-.13.03-.24-.02-.34-.05-.1-.43-1.04-.59-1.43-.16-.38-.32-.33-.43-.33-.11 0-.24-.01-.36-.01-.13 0-.34.05-.51.24-.18.19-.68.66-.68 1.62s.7 1.88.79 2c.1.13 1.37 2.1 3.32 2.94.46.2.83.32 1.11.41.47.15.89.13 1.23.08.38-.06 1.1-.45 1.25-.89.16-.43.16-.81.11-.89-.05-.08-.17-.13-.36-.23z"/></svg>
+        WhatsApp Wholesale Desk
+      </a>
+      <a href="tel:+919604313912" class="drawer-action-btn drawer-call">
+        Call Warehouse: +91 96043 13912
+      </a>
+    </div>
+  </aside>
 
   <!-- Fixed Luxury Header -->
   <header class="main-header">
@@ -649,6 +827,9 @@
               <span class="prod-grade-badge">4T 20W-40 / 10W-30</span>
               <span style="font-size:11px;color:#94a3b8;">1L / 900ml</span>
             </div>
+            <div class="card-img-box">
+              <img src="assets/products/2-wheeler-4t-1l.png" alt="2-Wheeler 4T Engine Oil" class="card-product-img" loading="lazy">
+            </div>
             <div class="prod-card-title">2-Wheeler Engine Oil</div>
             <p class="prod-card-app">For high-revving motorcycles, sports bikes, and automatic scooters. Ensures smooth wet-clutch engagement and thermal protection.</p>
             <div class="prod-specs-list">
@@ -657,7 +838,7 @@
               <div class="spec-item"><span class="spec-name">Application</span><span class="spec-val">Bikes &amp; Scooters</span></div>
             </div>
           </div>
-          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View 3D Can &rarr;</a>
+          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View Packaging Specs &rarr;</a>
         </div>
 
         <!-- 3 Wheeler -->
@@ -667,6 +848,9 @@
               <span class="prod-grade-badge">20W-40 / 15W-40</span>
               <span style="font-size:11px;color:#94a3b8;">3L / 4L</span>
             </div>
+            <div class="card-img-box">
+              <img src="assets/products/3-wheeler-auto-3l.png" alt="Commercial 3-Wheeler Auto Engine Oil" class="card-product-img" loading="lazy">
+            </div>
             <div class="prod-card-title">Commercial 3-Wheeler</div>
             <p class="prod-card-app">Engineered for passenger auto-rickshaws and cargo loaders running on CNG, LPG, and Diesel with constant start-stop city driving.</p>
             <div class="prod-specs-list">
@@ -675,7 +859,7 @@
               <div class="spec-item"><span class="spec-name">Application</span><span class="spec-val">Auto Rickshaws</span></div>
             </div>
           </div>
-          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View 3D Can &rarr;</a>
+          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View Packaging Specs &rarr;</a>
         </div>
 
         <!-- 4 Wheeler -->
@@ -685,6 +869,9 @@
               <span class="prod-grade-badge">5W-30 / 10W-40</span>
               <span style="font-size:11px;color:#94a3b8;">3.5L / 5L</span>
             </div>
+            <div class="card-img-box">
+              <img src="assets/products/4-wheeler-car-3-5l.png" alt="Passenger Car Synthetic Engine Oil" class="card-product-img" loading="lazy">
+            </div>
             <div class="prod-card-title">Passenger Car Synthetic</div>
             <p class="prod-card-app">Full-synthetic and synthetic-blend formulation for modern turbocharged petrol, diesel, and hybrid passenger cars and SUVs.</p>
             <div class="prod-specs-list">
@@ -693,7 +880,7 @@
               <div class="spec-item"><span class="spec-name">Application</span><span class="spec-val">Cars, Sedans &amp; SUVs</span></div>
             </div>
           </div>
-          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View 3D Can &rarr;</a>
+          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View Packaging Specs &rarr;</a>
         </div>
 
         <!-- JCB & Heavy Fleet -->
@@ -703,6 +890,9 @@
               <span class="prod-grade-badge">15W-40 CI-4</span>
               <span style="font-size:11px;color:#94a3b8;">5L / 20L / 210L</span>
             </div>
+            <div class="card-img-box">
+              <img src="assets/products/jcb-heavy-fleet-5l.png" alt="JCB &amp; Earthmoving Heavy Fleet Oil" class="card-product-img" loading="lazy">
+            </div>
             <div class="prod-card-title">JCB &amp; Earthmoving Fleet</div>
             <p class="prod-card-app">Heavy-duty diesel engine oil for hydraulic excavators, backhoe loaders, tippers, and earthmovers under extreme dust and crushing payloads.</p>
             <div class="prod-specs-list">
@@ -711,7 +901,7 @@
               <div class="spec-item"><span class="spec-name">Application</span><span class="spec-val">JCB, CAT, Volvo, Tippers</span></div>
             </div>
           </div>
-          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View 3D Can &rarr;</a>
+          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View Packaging Specs &rarr;</a>
         </div>
 
         <!-- Tractor UTTO -->
@@ -721,6 +911,9 @@
               <span class="prod-grade-badge">UTTO 15W40 / STOU</span>
               <span style="font-size:11px;color:#94a3b8;">5L / 10L / 20L</span>
             </div>
+            <div class="card-img-box">
+              <img src="assets/products/tractor-utto-5l.png" alt="Tractor UTTO Oil" class="card-product-img" loading="lazy">
+            </div>
             <div class="prod-card-title">Tractor Oil &amp; Hydraulics</div>
             <p class="prod-card-app">Universal Tractor Transmission Oil (UTTO) specifically designed for wet-brake noise prevention, hydraulic lifts, and differential gears.</p>
             <div class="prod-specs-list">
@@ -729,7 +922,7 @@
               <div class="spec-item"><span class="spec-name">Application</span><span class="spec-val">Mahindra, Sonalika, Swaraj</span></div>
             </div>
           </div>
-          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View 3D Can &rarr;</a>
+          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View Packaging Specs &rarr;</a>
         </div>
 
         <!-- Industrial & Greases -->
@@ -739,6 +932,9 @@
               <span class="prod-grade-badge">HYD 68 / MP3 / AP3</span>
               <span style="font-size:11px;color:#94a3b8;">26L / 210L Barrel</span>
             </div>
+            <div class="card-img-box">
+              <img src="assets/products/industrial-fluids-hyd68-5l.png" alt="Industrial Fluids HYD 68 &amp; Grease" class="card-product-img" loading="lazy">
+            </div>
             <div class="prod-card-title">Industrial Fluids &amp; Grease</div>
             <p class="prod-card-app">High-viscosity hydraulic oils (HYD 46/68), industrial gear oils (EP 90/140), and premium lithium complex high-temperature greases.</p>
             <div class="prod-specs-list">
@@ -747,7 +943,7 @@
               <div class="spec-item"><span class="spec-name">Application</span><span class="spec-val">Presses, Lathes, Bearings</span></div>
             </div>
           </div>
-          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View 3D Can &rarr;</a>
+          <a href="showroom.html" class="btn-outline" style="text-align:center;justify-content:center;">View Packaging Specs &rarr;</a>
         </div>
       </div>
     </section>
@@ -854,6 +1050,18 @@
       <div>Authorised Distributor · 100% Factory Authenticity Seal</div>
     </div>
   </footer>
+
+
+  <script>
+    function openMobileDrawer() {
+      document.getElementById('mobileDrawer')?.classList.add('open');
+      document.getElementById('drawerOverlay')?.classList.add('open');
+    }
+    function closeMobileDrawer() {
+      document.getElementById('mobileDrawer')?.classList.remove('open');
+      document.getElementById('drawerOverlay')?.classList.remove('open');
+    }
+  </script>
 
 </body>
 </html>

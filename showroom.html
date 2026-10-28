@@ -25,8 +25,9 @@
     body {
       background-color: #05070a;
       background-image:
-        radial-gradient(circle at 75% 20%, rgba(229, 169, 60, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 20% 75%, rgba(229, 169, 60, 0.06) 0%, transparent 50%);
+        radial-gradient(circle at 20% 25%, rgba(229, 169, 60, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(229, 169, 60, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 95%, rgba(200, 140, 40, 0.05) 0%, transparent 40%);
       font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #f1f5f9;
       min-height: 100vh;
@@ -249,7 +250,7 @@
       align-items: stretch;
     }
 
-    /* 3D Canvas Box */
+    /* Product Packaging Display Card */
     .viewer-card {
       background: radial-gradient(circle at 50% 50%, #151a24 0%, #080a0f 85%);
       border: 1px solid rgba(229, 169, 60, 0.35);
@@ -261,16 +262,38 @@
       flex-direction: column;
       box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), inset 0 0 40px rgba(0, 0, 0, 0.8);
     }
-    #showroom-canvas {
+    .product-stage {
       width: 100%;
       height: 100%;
-      flex: 1;
-      display: block;
-      cursor: grab;
-      outline: none;
+      min-height: 540px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 24px 20px;
     }
-    #showroom-canvas:active {
-      cursor: grabbing;
+    .product-img-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 15px 0;
+    }
+    .product-main-image {
+      max-width: 100%;
+      max-height: 440px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(229, 169, 60, 0.12));
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+      display: block;
+    }
+    .product-main-image:hover {
+      transform: scale(1.035);
     }
 
     .viewer-hud-overlay {
@@ -282,16 +305,17 @@
     .hud-chip {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(5, 7, 10, 0.75);
+      gap: 8px;
+      background: rgba(5, 7, 10, 0.85);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(229, 169, 60, 0.4);
+      border: 1px solid rgba(229, 169, 60, 0.45);
       border-radius: 20px;
-      padding: 5px 12px;
+      padding: 6px 14px;
       font-family: 'Space Grotesk', monospace;
       font-size: 11px;
       color: #ffd875;
       font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
     }
     .hud-controls-bar {
       position: absolute;
@@ -303,31 +327,24 @@
       pointer-events: auto;
     }
     .viewer-hint {
-      font-size: 11px;
-      color: #94a3b8;
+      font-size: 11.5px;
+      color: #ffd875;
       font-family: 'Space Grotesk', monospace;
       letter-spacing: 1px;
+      font-weight: 600;
     }
-    .spin-btn {
-      padding: 8px 18px;
-      background: rgba(229, 169, 60, 0.2);
-      border: 1px solid rgba(229, 169, 60, 0.5);
-      color: #ffd875;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      border-radius: 9999px;
-      cursor: pointer;
+    .verified-seal {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.25s;
-    }
-    .spin-btn:hover {
-      background: linear-gradient(135deg, #f7ce76, #cf8b22);
-      color: #0b0c10;
-      box-shadow: 0 0 16px rgba(229, 169, 60, 0.6);
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      color: #25d366;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 9999px;
     }
 
     /* Product Specs Panel */
@@ -627,6 +644,125 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* Mobile Menu Toggle Button */
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      background: rgba(14, 18, 26, 0.85);
+      border: 1px solid rgba(229, 169, 60, 0.4);
+      border-radius: 10px;
+      color: #ffd875;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      background: rgba(229, 169, 60, 0.15);
+      border-color: #ffd875;
+    }
+    .mobile-menu-btn svg {
+      width: 22px; height: 22px;
+    }
+
+    /* Mobile Drawer */
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 290px;
+      height: 100vh;
+      background: rgba(10, 13, 20, 0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-left: 1px solid rgba(229, 169, 60, 0.35);
+      z-index: 2000;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -15px 0 40px rgba(0, 0, 0, 0.9);
+    }
+    .mobile-nav-drawer.open {
+      right: 0;
+    }
+    .mobile-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .mobile-drawer-close {
+      background: transparent;
+      border: none;
+      color: #ffd875;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .mobile-nav-link {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.2s;
+    }
+    .mobile-nav-link.active-nav, .mobile-nav-link:hover {
+      color: #0b0c10;
+      background: linear-gradient(135deg, #f7ce76, #cf8b22);
+      border-color: #f7ce76;
+    }
+    .mobile-drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .drawer-action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.25s;
+    }
+    .drawer-wa {
+      background: #25d366;
+      color: #0b0c10;
+    }
+    .drawer-call {
+      background: rgba(229, 169, 60, 0.15);
+      border: 1px solid rgba(229, 169, 60, 0.4);
+      color: #ffd875;
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .main-header { padding: 16px 20px; }
@@ -637,6 +773,7 @@
       .pack-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-content { grid-template-columns: 1fr 1fr; }
       .header-nav { display: none; }
+      .mobile-menu-btn { display: inline-flex; }
     }
     @media (max-width: 640px) {
       .hero-title { font-size: 38px; }
@@ -647,21 +784,47 @@
     }
   </style>
 
-  <!-- 3D Scripts & Import Map -->
-  <script src="assets/can_data.js"></script>
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-      "three/examples/jsm/loaders/GLTFLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js"
-    }
-  }
-  </script>
-</head>
+  </head>
 <body>
 
   <!-- Toast -->
+  <!-- Toast -->
   <div id="showroom-toast">Loaded 3D Model</div>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer-overlay" id="drawerOverlay" onclick="closeMobileDrawer()"></div>
+
+  <!-- Mobile Nav Drawer -->
+  <aside class="mobile-nav-drawer" id="mobileDrawer">
+    <div>
+      <div class="mobile-drawer-header">
+        <div class="brand-text">
+          <span class="brand-name">J B Traders</span>
+          <span class="brand-sub">The Lube Expert · Gandhi Oil</span>
+        </div>
+        <button class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Close Navigation">✕</button>
+      </div>
+
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">HOME</a>
+        <a href="showroom.html" class="mobile-nav-link active-nav">PRODUCT SHOWROOM</a>
+        <a href="liquid-gold.html" class="mobile-nav-link">LIQUID GOLD RANGE</a>
+        <a href="protection.html" class="mobile-nav-link">VISCOSITY SCIENCE</a>
+        <a href="about.html" class="mobile-nav-link">ABOUT US</a>
+        <a href="dealer-enquiry.html" class="mobile-nav-link">DEALER ENQUIRY</a>
+      </nav>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <a href="https://wa.me/919604313912?text=Hello%20J%20B%20Traders,%20I%20am%20inquiring%20about%20dealer%20pricing." target="_blank" class="drawer-action-btn drawer-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.19-.09-1.1-.54-1.27-.6-.17-.06-.3-.09-.43.1-.13.19-.49.6-.6.73-.11.13-.23.14-.42.05-.19-.1-.8-.3-1.53-.95-.57-.51-.95-1.13-1.06-1.32-.11-.19-.01-.29.08-.38.08-.09.19-.23.29-.35.1-.11.13-.19.19-.32.06-.13.03-.24-.02-.34-.05-.1-.43-1.04-.59-1.43-.16-.38-.32-.33-.43-.33-.11 0-.24-.01-.36-.01-.13 0-.34.05-.51.24-.18.19-.68.66-.68 1.62s.7 1.88.79 2c.1.13 1.37 2.1 3.32 2.94.46.2.83.32 1.11.41.47.15.89.13 1.23.08.38-.06 1.1-.45 1.25-.89.16-.43.16-.81.11-.89-.05-.08-.17-.13-.36-.23z"/></svg>
+        WhatsApp Order Desk
+      </a>
+      <a href="tel:+919604313912" class="drawer-action-btn drawer-call">
+        Call Warehouse: +91 96043 13912
+      </a>
+    </div>
+  </aside>
 
   <!-- Fixed Luxury Header -->
   <header class="main-header">
@@ -690,6 +853,10 @@
       <a href="tel:+919604313912" class="contact-btn">
         Call Helpline <span class="btn-circle"></span>
       </a>
+      <button class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Open Navigation Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      
     </div>
   </header>
 
@@ -697,13 +864,13 @@
 
     <!-- Hero -->
     <section class="hero-section">
-      <div class="hero-badge">Real-Time 3D WebGL Digital Packaging Studio</div>
+      <div class="hero-badge">Authentic Factory Packaging Portfolio</div>
       <h1 class="hero-title">
         PRODUCTS &amp;<br>
-        <span class="gold-gradient">3D PACKAGING STUDIO</span>
+        <span class="gold-gradient">PACKAGING SHOWROOM</span>
       </h1>
       <p class="hero-lead">
-        Interact with our industrial lubricant packaging in real-time 3D. Click any category tab below to morph the can proportions, inspect tamper-evident induction cap seals, and explore technical viscosity specifications.
+        Explore J B TRADERS (Gandhi Oil) genuine lubricant packaging. Select any product category below to inspect authentic factory container artwork, viscosity grades, pack sizes, and wholesale distribution specs.
       </p>
     </section>
 
@@ -711,21 +878,25 @@
     <section class="showroom-grid">
       <!-- 3D Viewer Container -->
       <div class="viewer-card">
-        <div class="viewer-hud-overlay">
-          <div class="hud-chip">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-            Interactive 3D Can
+        <div class="product-stage">
+          <div class="viewer-hud-overlay">
+            <div class="hud-chip">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="#ffd875"><circle cx="12" cy="12" r="10"/></svg>
+              <span id="product-badge-text">5L Heavy Fleet Pack · Earthmoving</span>
+            </div>
           </div>
-        </div>
 
-        <canvas id="showroom-canvas"></canvas>
+          <div class="product-img-wrap">
+            <img id="product-main-img" src="assets/products/jcb-heavy-fleet-5l.png" alt="JCB &amp; Earthmoving Heavy Fleet Oil" class="product-main-image">
+          </div>
 
-        <div class="hud-controls-bar">
-          <div class="viewer-hint">Drag to Orbit · Scroll to Zoom</div>
-          <button class="spin-btn" id="spin-can-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-            360° Spin
-          </button>
+          <div class="hud-controls-bar">
+            <div class="viewer-hint" id="product-pack-hint">Pack Standard: 5L Can · 20L · 210L</div>
+            <div class="verified-seal">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              100% Factory Authenticity Seal
+            </div>
+          </div>
         </div>
       </div>
 
@@ -910,84 +1081,68 @@
     </div>
   </footer>
 
-  <!-- Three.js 3D Showroom Implementation -->
-  <script type="module">
-    import * as THREE from 'three';
-    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-
-    const canvas = document.getElementById('showroom-canvas');
-    const container = canvas.parentElement;
-
-    let scene, camera, renderer;
-    let modelPivot, gltfModel, canBodyMesh = null;
-    let isDragging = false;
-    let prevMouseX = 0, prevMouseY = 0;
-    let rotationVelocityX = 0, rotationVelocityY = 0;
-
-    const targetScale = new THREE.Vector3(1, 1, 1);
-    const textureLoader = new THREE.TextureLoader();
-    const loadedTextures = {};
-
+  <!-- Product Showcase Switcher Implementation -->
+  <script>
     const productCatalog = {
       '2wheeler': {
-        name: "2 Wheeler Oil",
-        grade: "4T 20W-40 JASO MA2 / API SL High RPM",
-        desc: "Engineered for 4-stroke motorcycles and scooters. High wet-clutch grip prevents transmission slippage and protects valvetrain cams.",
-        visc: "20W-40 · 10W-30",
+        name: "2-Wheeler 4T Engine Oil",
+        grade: "4T 20W-40 / 10W-30 JASO MA2 / API SN High RPM",
+        desc: "Engineered for 4-stroke motorcycles, sports bikes, and automatic scooters. High wet-clutch friction enhancers prevent clutch slippage and protect valvetrain cams.",
+        visc: "SAE 10W-40 · 20W-40",
         pack: "1L Bottle · 900ml",
-        adv: "Zero Clutch Slip",
-        scale: { x: 0.72, y: 0.88, z: 0.65 },
-        label: 'assets/label_2wheeler.png'
+        adv: "Zero Clutch Slip · High RPM Cooler Running",
+        image: "assets/products/2-wheeler-4t-1l.png",
+        badge: "1L Retail Bottle · 4T Motorcycle"
       },
       '3wheeler': {
-        name: "3 Wheeler Oil",
-        grade: "20W-40 Low-Ash CNG / LPG / Diesel",
-        desc: "Formulated for passenger auto-rickshaws and cargo loaders. Low-ash chemistry prevents spark plug fouling in extreme city traffic.",
-        visc: "20W-40 · 15W-40",
+        name: "3-Wheeler Auto Engine Oil",
+        grade: "20W-50 / 20W-40 Low-Ash CNG / LPG / Diesel",
+        desc: "Formulated for commercial passenger auto-rickshaws and cargo loaders. Low-ash chemistry prevents spark plug fouling across continuous all-day city stop-and-go shifts.",
+        visc: "SAE 20W-50 · 20W-40 CNG",
         pack: "3L Can · 4L Can",
-        adv: "Anti-Spark Plug Fouling",
-        scale: { x: 0.88, y: 0.94, z: 0.80 },
-        label: 'assets/label_3wheeler.png'
+        adv: "Anti-Spark Plug Fouling · High Mileage",
+        image: "assets/products/3-wheeler-auto-3l.png",
+        badge: "3L Commercial Can · Auto Rickshaw"
       },
       '4wheeler': {
-        name: "4 Wheeler Synthetic",
-        grade: "5W-30 API SN Plus / CF Full Synthetic",
-        desc: "Fully synthetic passenger car engine oil for petrol, diesel, and turbocharged modern cars. Sub-zero cold starts and zero sludge formation.",
-        visc: "5W-30 · 10W-40",
+        name: "4-Wheeler Car Engine Oil",
+        grade: "5W-30 API SN / ACEA C3 Full Synthetic",
+        desc: "Fully synthetic passenger car engine oil for modern turbocharged petrol, diesel, and hybrid cars. Sub-zero cold start lubrication and zero sludge formation.",
+        visc: "SAE 5W-30 · 10W-40",
         pack: "3.5L Can · 5L Can",
-        adv: "Turbo & Fuel Economy",
-        scale: { x: 0.92, y: 0.96, z: 0.88 },
-        label: 'assets/label_4wheeler.png'
+        adv: "Turbo Protection · Maximum Fuel Economy",
+        image: "assets/products/4-wheeler-car-3-5l.png",
+        badge: "3.5L Tech Can · Full Synthetic Car"
       },
       'jcb': {
-        name: "JCB & Earth Moving",
-        grade: "15W-40 CI-4 Heavy Duty Commercial Pack",
-        desc: "Heavy-duty diesel engine, hydraulic and transmission lubricant engineered specifically for heavy earthmoving machinery under extreme dust.",
-        visc: "15W-40 CI-4 · HYD 68",
+        name: "JCB & Earthmoving Heavy Fleet Oil",
+        grade: "15W-40 CI-4 / SL Heavy Duty Commercial Pack",
+        desc: "Heavy-duty diesel engine, hydraulic, and transmission lubricant engineered specifically for heavy earthmoving machinery operating under extreme dust and crushing payloads.",
+        visc: "SAE 15W-40 CI-4 · HYD 68",
         pack: "5L Can · 20L · 210L",
-        adv: "High Thermal & Anti-Soot",
-        scale: { x: 1.0, y: 1.0, z: 1.0 },
-        label: 'assets/label_jcb.png'
+        adv: "High Thermal Stability · Anti-Soot & Shock Film",
+        image: "assets/products/jcb-heavy-fleet-5l.png",
+        badge: "5L Heavy-Duty Can · Earthmoving Fleet"
       },
       'tractor': {
-        name: "Tractor Oil & UTTO",
-        grade: "UTTO 15W40 / STOU Universal Tractor Transmission",
-        desc: "Universal tractor transmission and hydraulic fluid. Formulated to eliminate wet-brake chatter, protect differential gears, and power lift cylinders.",
-        visc: "UTTO 15W40 · STOU",
+        name: "Tractor UTTO Oil",
+        grade: "UTTO 10W-30 / 15W-40 Universal Tractor Transmission",
+        desc: "Universal tractor transmission and hydraulic fluid. Formulated to eliminate wet-brake chatter, protect differential gears, and power heavy agricultural lift cylinders.",
+        visc: "SAE 10W-30 · 15W-40 STOU",
         pack: "5L Can · 10L · 20L",
-        adv: "Chatter-Free Wet Brakes",
-        scale: { x: 1.05, y: 1.02, z: 1.05 },
-        label: 'assets/label_tractor.png'
+        adv: "Chatter-Free Wet Brakes · Lift Cylinder Protection",
+        image: "assets/products/tractor-utto-5l.png",
+        badge: "5L Farm Can · Tractor UTTO & Wet Brake"
       },
       'industrial': {
-        name: "Industrial & Grease",
-        grade: "HYD 68 / EP 90/140 / MP3 Lithium Grease",
-        desc: "Heavy industrial fluids engineered for sustained 210-bar hydraulic presses, enclosed industrial gearboxes, and extreme-pressure chassis bearings.",
-        visc: "HYD 68 · EP 90/140",
-        pack: "26L Bucket · 210L Drum",
-        adv: "Anti-Cavitation & Anti-Wear",
-        scale: { x: 1.15, y: 1.12, z: 1.15 },
-        label: 'assets/label_industrial.png'
+        name: "Industrial Fluids — HYD 68 & Greases",
+        grade: "ISO VG 68 Anti-Wear / EP 90/140 / MP3 Grease",
+        desc: "Heavy industrial fluids engineered for sustained 210-bar industrial hydraulic presses, injection molding machines, enclosed gearboxes, and chassis bearings.",
+        visc: "ISO VG 68 · EP 90/140",
+        pack: "5L Can · 26L Pail · 210L Drum",
+        adv: "Anti-Cavitation · High Oxidation Stability",
+        image: "assets/products/industrial-fluids-hyd68-5l.png",
+        badge: "5L Pack / 26L Drum · Industrial HYD 68"
       }
     };
 
@@ -1000,222 +1155,35 @@
       }
     }
 
-    function init() {
-      // Scene
-      scene = new THREE.Scene();
-
-      // Camera
-      camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 100);
-      camera.position.set(0, 0, 5.0);
-      scene.add(camera);
-
-      // Renderer
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.35;
-
-      // Lights
-      const ambientLight = new THREE.AmbientLight(0xfff3e0, 1.4);
-      scene.add(ambientLight);
-
-      const mainLight = new THREE.DirectionalLight(0xfffaed, 3.2);
-      mainLight.position.set(3, 5, 4);
-      mainLight.castShadow = true;
-      scene.add(mainLight);
-
-      const goldRimLight = new THREE.DirectionalLight(0xe5a93c, 2.5);
-      goldRimLight.position.set(-4, -2, -3);
-      scene.add(goldRimLight);
-
-      const topLight = new THREE.PointLight(0xffffff, 1.8, 10);
-      topLight.position.set(0, 4, 2);
-      scene.add(topLight);
-
-      // Model Pivot
-      modelPivot = new THREE.Group();
-      scene.add(modelPivot);
-
-      // Load Can Model
-      loadModel();
-
-      // Setup Event Listeners
-      setupInteraction();
-      setupTabs();
-
-      window.addEventListener('resize', onResize);
-      animate();
-    }
-
-    function base64ToArrayBuffer(base64) {
-      const b64Data = base64.split(',')[1] || base64;
-      const bin = window.atob(b64Data);
-      const len = bin.length;
-      const bytes = new Uint8Array(len);
-      for (let i = 0; i < len; i++) bytes[i] = bin.charCodeAt(i);
-      return bytes.buffer;
-    }
-
-    function loadModel() {
-      const loader = new GLTFLoader();
-
-      if (window.JB_CAN_MODEL_B64) {
-        try {
-          const buffer = base64ToArrayBuffer(window.JB_CAN_MODEL_B64);
-          loader.parse(buffer, '', (gltf) => {
-            setupModel(gltf);
-          }, (err) => {
-            loadFromPath();
-          });
-          return;
-        } catch (e) {
-          loadFromPath();
-        }
-      } else {
-        loadFromPath();
-      }
-
-      function loadFromPath() {
-        loader.load('assets/jb_traders_can_model.glb', (gltf) => {
-          setupModel(gltf);
-        });
-      }
-    }
-
-    let baseScale = 1.0;
-
-    function setupModel(gltf) {
-      gltfModel = gltf.scene;
-      modelPivot.add(gltfModel);
-
-      gltfModel.traverse((child) => {
-        if (child.isMesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
-          if (child.name === 'JB_Traders_Can_Body' || (child.material && child.material.name === 'JB_Traders_Molded_HDPE')) {
-            canBodyMesh = child;
-          }
-          if (child.material) {
-            child.material.roughness = 0.28;
-            child.material.metalness = 0.04;
-            if (child.material.map) {
-              child.material.map.anisotropy = 16;
-              child.material.map.flipY = false;
-            }
-          }
-        }
-      });
-
-      // Fit model to view with optimal scale
-      const box = new THREE.Box3().setFromObject(gltfModel);
-      const size = box.getSize(new THREE.Vector3());
-      const maxDim = Math.max(size.x, size.y, size.z);
-      baseScale = 2.65 / (maxDim || 1);
-      gltfModel.scale.setScalar(baseScale);
-      targetScale.set(baseScale, baseScale, baseScale);
-      gltfModel.updateMatrixWorld(true);
-
-      const boxScaled = new THREE.Box3().setFromObject(gltfModel);
-      const center = boxScaled.getCenter(new THREE.Vector3());
-      gltfModel.position.sub(center);
-      modelPivot.position.y = -0.1;
-      modelPivot.rotation.y = 0.35;
-
-      // Preload textures with flipY = false
-      Object.keys(productCatalog).forEach(id => {
-        const texSrc = (window.JB_PRODUCT_TEXTURES && window.JB_PRODUCT_TEXTURES[id])
-          ? window.JB_PRODUCT_TEXTURES[id]
-          : productCatalog[id].label;
-        const tex = textureLoader.load(texSrc, (t) => {
-          t.flipY = false;
-          t.needsUpdate = true;
-        });
-        tex.flipY = false;
-        loadedTextures[id] = tex;
-      });
-
-      showToast("J B TRADERS 3D Can Loaded");
-    }
-
-    function setupInteraction() {
-      // Mouse & Touch Drag Controls
-      canvas.addEventListener('pointerdown', (e) => {
-        isDragging = true;
-        prevMouseX = e.clientX;
-        prevMouseY = e.clientY;
-        rotationVelocityX = 0;
-        rotationVelocityY = 0;
-      });
-
-      window.addEventListener('pointermove', (e) => {
-        if (!isDragging) return;
-        const deltaX = e.clientX - prevMouseX;
-        const deltaY = e.clientY - prevMouseY;
-        prevMouseX = e.clientX;
-        prevMouseY = e.clientY;
-
-        rotationVelocityY = deltaX * 0.007;
-        rotationVelocityX = deltaY * 0.005;
-
-        modelPivot.rotation.y += rotationVelocityY;
-        modelPivot.rotation.x = Math.max(-0.5, Math.min(0.5, modelPivot.rotation.x + rotationVelocityX));
-      });
-
-      window.addEventListener('pointerup', () => {
-        isDragging = false;
-      });
-
-      // 360 Spin Button
-      const spinBtn = document.getElementById('spin-can-btn');
-      if (spinBtn) {
-        spinBtn.addEventListener('click', () => {
-          let startY = modelPivot.rotation.y;
-          let startTime = performance.now();
-          const duration = 1200;
-
-          function spinStep(now) {
-            const elapsed = now - startTime;
-            const progress = Math.min(1, elapsed / duration);
-            const ease = 0.5 - 0.5 * Math.cos(progress * Math.PI);
-            modelPivot.rotation.y = startY + Math.PI * 2 * ease;
-            if (progress < 1) {
-              requestAnimationFrame(spinStep);
-            }
-          }
-          requestAnimationFrame(spinStep);
-          showToast("360° Inspection Orbit");
-        });
-      }
-    }
-
-    function setupTabs() {
-      const tabs = document.querySelectorAll('.prod-tab-btn');
-      tabs.forEach(tab => {
-        const onTabClick = function(e) {
-          if (e) e.preventDefault();
-          const prodId = tab.getAttribute('data-prod');
-          if (prodId && window.selectProduct) {
-            window.selectProduct(prodId);
-          }
-        };
-        tab.addEventListener('click', onTabClick);
-        tab.addEventListener('pointerup', onTabClick);
-      });
-    }
-
     window.selectProduct = function(prodId) {
       if (!productCatalog[prodId]) return;
       const data = productCatalog[prodId];
 
-      // Update Tabs
-      document.querySelectorAll('.prod-tab-btn').forEach(t => {
-        t.classList.toggle('active', t.getAttribute('data-prod') === prodId);
+      // Update Tabs active state
+      document.querySelectorAll('.prod-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-prod') === prodId);
       });
 
-      // Update HUD safely
+      // Update Image with smooth transition
+      const img = document.getElementById('product-main-img');
+      if (img) {
+        img.style.opacity = '0.2';
+        img.style.transform = 'scale(0.96)';
+        setTimeout(() => {
+          img.src = data.image;
+          img.alt = data.name;
+          img.style.opacity = '1';
+          img.style.transform = 'scale(1)';
+        }, 120);
+      }
+
+      // Update Badges & Hints
+      const badgeEl = document.getElementById('product-badge-text');
+      if (badgeEl) badgeEl.textContent = data.badge;
+      const hintEl = document.getElementById('product-pack-hint');
+      if (hintEl) hintEl.textContent = `Pack Standard: ${data.pack}`;
+
+      // Update Spec HUD Cards
       const elName = document.getElementById('hud-name');
       if (elName) elName.textContent = data.name;
       const elGrade = document.getElementById('hud-grade');
@@ -1229,65 +1197,28 @@
       const elAdv = document.getElementById('hud-adv');
       if (elAdv) elAdv.textContent = data.adv;
 
-      const waMsg = encodeURIComponent(`Hello J B Traders, I am interested in dealer pricing for ${data.name} (${data.grade}).`);
+      // Update WhatsApp Link
+      const waMsg = encodeURIComponent(`Hello J B Traders, I am interested in wholesale dealer pricing for ${data.name} (${data.grade}).`);
       const waLink = document.getElementById('hud-wa-link');
       if (waLink) waLink.href = `https://wa.me/919604313912?text=${waMsg}`;
 
-      // Update Scale Vector dynamically based on product package size
-      targetScale.set(baseScale * data.scale.x, baseScale * data.scale.y, baseScale * data.scale.z);
-
-      // Update 3D Texture dynamically
-      if (canBodyMesh && canBodyMesh.material) {
-        if (!loadedTextures[prodId]) {
-          const texSrc = (window.JB_PRODUCT_TEXTURES && window.JB_PRODUCT_TEXTURES[prodId])
-            ? window.JB_PRODUCT_TEXTURES[prodId]
-            : data.label;
-          const tex = textureLoader.load(texSrc, (t) => {
-            t.flipY = false;
-            t.needsUpdate = true;
-          });
-          tex.flipY = false;
-          loadedTextures[prodId] = tex;
-        }
-        const activeTex = loadedTextures[prodId];
-        activeTex.flipY = false;
-        canBodyMesh.material.map = activeTex;
-        canBodyMesh.material.needsUpdate = true;
-      }
-
-      showToast(`Loaded ${data.name} 3D Package`);
+      showToast(`Loaded ${data.name}`);
     };
 
-    function onResize() {
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    }
+    // Mobile Drawer Controls
+    window.openMobileDrawer = function() {
+      document.getElementById('mobileDrawer')?.classList.add('open');
+      document.getElementById('drawerOverlay')?.classList.add('open');
+    };
+    window.closeMobileDrawer = function() {
+      document.getElementById('mobileDrawer')?.classList.remove('open');
+      document.getElementById('drawerOverlay')?.classList.remove('open');
+    };
 
-    function animate() {
-      requestAnimationFrame(animate);
-
-      // Inertia damping
-      if (!isDragging && modelPivot) {
-        rotationVelocityY *= 0.94;
-        rotationVelocityX *= 0.94;
-        modelPivot.rotation.y += rotationVelocityY;
-        modelPivot.rotation.x += rotationVelocityX;
-
-        // Subtle idle turntable float
-        modelPivot.rotation.y += 0.003;
-      }
-
-      // Smooth scale interpolation
-      if (gltfModel) {
-        gltfModel.scale.lerp(targetScale, 0.08);
-      }
-
-      renderer.render(scene, camera);
-    }
-
-    init();
+    // Initialize with JCB on DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+      window.selectProduct('jcb');
+    });
   </script>
-
 </body>
 </html>

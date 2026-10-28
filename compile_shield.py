@@ -159,7 +159,7 @@ bootstrap_loader = f"""
 
       // Inject Body HTML
       document.body.innerHTML = data.b;
-      document.body.style.minHeight = '1200vh';
+      document.body.style.minHeight = '100vh';
       document.body.style.overflowX = 'hidden';
       document.body.style.overflowY = 'auto';
 
@@ -215,7 +215,7 @@ protected_html = f"""<!DOCTYPE html>
   {bootstrap_min}
   </script>
 </head>
-<body style="background:#000000;margin:0;min-height:1200vh;overflow-x:hidden;-webkit-user-select:none;user-select:none;">
+<body style="background:#05070a;margin:0;min-height:100vh;overflow-x:hidden;-webkit-user-select:none;user-select:none;">
   <noscript>
     <div style="color:#e5a93c;font-family:sans-serif;text-align:center;padding:80px 20px;">
       <h2>JavaScript Required</h2>
