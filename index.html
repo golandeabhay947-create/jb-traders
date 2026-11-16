@@ -385,8 +385,52 @@
       font-size: 14.5px;
       line-height: 1.65;
       color: #cbd5e1;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       font-weight: 400;
+    }
+
+    /* Service Benefits Row (Requirement 4.C) */
+    .service-benefits-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(229, 169, 60, 0.28);
+      border-radius: 14px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .service-benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex: 1;
+      justify-content: center;
+      min-width: 0;
+    }
+    .benefit-icon {
+      color: #ffd875;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 6px rgba(229, 169, 60, 0.4));
+    }
+    .benefit-text {
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .benefit-divider {
+      width: 1px;
+      height: 22px;
+      background: linear-gradient(180deg, transparent, rgba(229, 169, 60, 0.7), transparent);
+      margin: 0 4px;
+      flex-shrink: 0;
     }
 
     /* Contact Pills Row */
@@ -409,6 +453,10 @@
       font-weight: 600;
       text-decoration: none;
       transition: all 0.25s ease;
+    }
+    .partner-pill svg {
+      color: #ffd875;
+      stroke: #ffd875;
     }
     .partner-pill:hover {
       background: rgba(229, 169, 60, 0.18);
@@ -496,48 +544,174 @@
       text-decoration: underline;
     }
 
-    /* Hero Right Column: Floating Actions & Bottle Hints */
+    /* Hero Right Column: 3D Product Showcase & Controls */
     .hero-right {
       pointer-events: none;
+      position: relative;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      justify-content: flex-start;
+      align-items: center;
+      justify-content: center;
       height: 100%;
-      min-height: 420px;
-      position: relative;
+      min-height: 520px;
+      width: 100%;
       z-index: 3;
     }
 
-    @media (min-width: 1440px) {
-      .hero-right { transform: translateX(calc(50vw - 672px)); }
+    /* Showcase stage containing engine backdrop, 3D anchor and glowing pedestal */
+    .hero-showcase-stage {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
     }
 
+    /* Subtle automotive engine components in the background (Section 5) */
+    .engine-bg-backdrop {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 460px;
+      height: 460px;
+      transform: translate(-50%, -50%);
+      background-image: url('assets/hero-oil.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.16;
+      mix-blend-mode: luminosity;
+      border-radius: 50%;
+      filter: blur(2px);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, black 28%, transparent 70%);
+      mask-image: radial-gradient(circle at 50% 50%, black 28%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Anchor element for precise 3D model positioning */
+    .product-showcase-anchor {
+      position: absolute;
+      width: 320px;
+      height: 440px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Glowing circular black-and-gold pedestal underneath container (Section 5) */
+    .product-pedestal-wrap {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 340px;
+      height: 60px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .pedestal-glow-ambient {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 360px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse 70% 45% at 50% 50%, rgba(229, 169, 60, 0.45) 0%, rgba(200, 140, 30, 0.15) 55%, transparent 75%);
+      filter: blur(14px);
+    }
+    .pedestal-disk-outer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 310px;
+      height: 46px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at 50% 30%, #1a202c 0%, #06070a 85%);
+      border: 2px solid rgba(229, 169, 60, 0.9);
+      box-shadow: 0 0 28px rgba(229, 169, 60, 0.35), inset 0 2px 6px rgba(255, 216, 117, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pedestal-disk-inner {
+      width: 255px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 216, 117, 0.5);
+      background: radial-gradient(ellipse at 50% 50%, #0e121a 0%, #05070a 90%);
+      box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.85);
+    }
+    .pedestal-shadow-ground {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 270px;
+      height: 24px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.95) 0%, transparent 70%);
+    }
+
+    /* Golden oil splash effects around the bottom of the container (Section 5) */
+    .pedestal-splash-left, .pedestal-splash-right {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      background: radial-gradient(circle at 40% 40%, #ffd875, #e5a93c 60%, transparent 70%);
+      border-radius: 50% 0 50% 50%;
+      opacity: 0.75;
+      filter: drop-shadow(0 0 8px rgba(229, 169, 60, 0.65));
+    }
+    .pedestal-splash-left {
+      bottom: 24px;
+      left: 20px;
+      transform: rotate(-35deg) scale(0.7);
+    }
+    .pedestal-splash-right {
+      bottom: 24px;
+      right: 20px;
+      transform: rotate(55deg) scale(0.75);
+    }
+
+    /* Upper-right compact floating control panel (Section 5) */
     .hero-floating-actions {
       pointer-events: auto;
+      position: absolute;
+      top: 12px;
+      right: clamp(10px, 2vw, 24px);
+      z-index: 10;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      background: rgba(14, 18, 28, 0.85);
-      backdrop-filter: blur(20px);
+      gap: 7px;
+      background: rgba(14, 18, 28, 0.88);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
       border: 1px solid rgba(229, 169, 60, 0.35);
       border-radius: 16px;
-      padding: 12px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+      padding: 10px 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85);
       max-width: min(100%, 250px);
     }
     .hero-cta-btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 18px;
+      gap: 9px;
+      padding: 9px 16px;
       border-radius: 9999px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
       text-decoration: none;
       transition: all 0.25s ease;
+      white-space: nowrap;
     }
     .hero-cta-btn.whatsapp-cta {
       background: rgba(37, 211, 102, 0.16);
@@ -563,6 +737,7 @@
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(229, 169, 60, 0.4);
       color: #ffd875;
+      cursor: pointer;
     }
     .hero-cta-btn.spin-cta:hover {
       background: rgba(229, 169, 60, 0.2);
@@ -571,17 +746,56 @@
 
     .hero-bottle-hint {
       pointer-events: auto;
+      position: absolute;
+      top: 168px;
+      right: clamp(10px, 2vw, 24px);
+      z-index: 10;
       font-family: 'Poppins', monospace;
-      font-size: 11px;
+      font-size: 10.5px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: #ffd875;
-      background: rgba(5, 7, 10, 0.8);
+      background: rgba(5, 7, 10, 0.85);
       backdrop-filter: blur(10px);
-      padding: 6px 14px;
+      -webkit-backdrop-filter: blur(10px);
+      padding: 5px 13px;
       border-radius: 9999px;
       border: 1px solid rgba(229, 169, 60, 0.3);
-      margin-top: 8px;
+      white-space: nowrap;
+    }
+
+    /* Hero Section Bottom Carousel Indicators (Section 6) */
+    .hero-carousel-indicators {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 10;
+      pointer-events: auto;
+    }
+    .indicator-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.22);
+      border: 1px solid rgba(229, 169, 60, 0.35);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      padding: 0;
+      outline: none;
+    }
+    .indicator-dot:hover {
+      background: rgba(229, 169, 60, 0.5);
+      border-color: #ffd875;
+    }
+    .indicator-dot.active {
+      width: 28px;
+      background: linear-gradient(135deg, #ffd875, #e5a93c);
+      box-shadow: 0 0 12px rgba(229, 169, 60, 0.65);
+      border-color: #ffd875;
     }
 
     /* =========================================================================
@@ -943,26 +1157,39 @@
       .main-header { padding: 0 20px; }
       .header-nav { display: none; }
       .mobile-menu-btn { display: inline-flex; }
-      .hero-section { padding-bottom: 0; }
+      .hero-section { padding-bottom: 24px; }
       .hero-content-container {
         grid-template-columns: 1fr;
         padding: 0 20px;
-        padding-bottom: clamp(400px, 48vw, 500px);
-        gap: 20px;
+        padding-bottom: 30px;
+        gap: 30px;
       }
       .hero-left {
         max-width: 100%;
       }
       .hero-right {
-        align-items: flex-end;
-        min-height: auto;
+        position: relative;
+        align-items: center;
+        min-height: 480px;
         height: auto;
-        margin-top: 0;
+        margin-top: 10px;
       }
       .hero-floating-actions {
+        position: static;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
+        max-width: 480px;
+        margin-bottom: 8px;
+      }
+      .hero-bottle-hint {
+        position: static;
+        margin-bottom: 16px;
+      }
+      .hero-showcase-stage {
+        max-width: 100%;
+        height: 440px;
       }
       .feature-cards-section { padding: 70px 20px; }
       .feature-cards-grid { grid-template-columns: 1fr; }
@@ -974,6 +1201,18 @@
       .hero-section { overflow: visible; padding: 24px 0 32px; }
       .hero-content-container { padding-left: 14px; padding-right: 14px; }
       .partner-title { font-size: clamp(30px, 9vw, 36px); }
+      .service-benefits-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 12px 14px;
+      }
+      .benefit-divider {
+        display: none;
+      }
+      .service-benefit-item {
+        justify-content: flex-start;
+      }
       .partner-form .form-row { grid-template-columns: 1fr; }
       .partner-contact-row { flex-direction: column; align-items: stretch; }
       .partner-pill { width: 100%; overflow-wrap: anywhere; }
@@ -981,6 +1220,11 @@
       .hero-floating-actions { width: 100%; max-width: none; }
       .hero-cta-btn { justify-content: center; flex: 1 1 140px; }
       .hero-bottle-hint { align-self: center; text-align: center; }
+      .hero-showcase-stage { height: 380px; }
+      .product-pedestal-wrap { width: 260px; }
+      .pedestal-disk-outer { width: 250px; }
+      .pedestal-disk-inner { width: 200px; }
+      .pedestal-glow-ambient { width: 280px; }
       .product-tabs-grid { grid-template-columns: 1fr 1fr; }
       .metrics-mini-grid { grid-template-columns: 1fr; }
       .footer-content { grid-template-columns: 1fr; }
@@ -1132,7 +1376,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.19-.09-1.1-.54-1.27-.6-.17-.06-.3-.09-.43.1-.13.19-.49.6-.6.73-.11.13-.23.14-.42.05-.19-.1-.8-.3-1.53-.95-.57-.51-.95-1.13-1.06-1.32-.11-.19-.01-.29.08-.38.08-.09.19-.23.29-.35.1-.11.13-.19.19-.32.06-.13.03-.24-.02-.34-.05-.1-.43-1.04-.59-1.43-.16-.38-.32-.33-.43-.33-.11 0-.24-.01-.36-.01-.13 0-.34.05-.51.24-.18.19-.68.66-.68 1.62s.7 1.88.79 2c.1.13 1.37 2.1 3.32 2.94.46.2.83.32 1.11.41.47.15.89.13 1.23.08.38-.06 1.1-.45 1.25-.89.16-.43.16-.81.11-.89-.05-.08-.17-.13-.36-.23z"/></svg>
       </a>
       <a href="tel:+919604313912" class="contact-btn" aria-label="Call helpline">
-        Call Helpline <span class="btn-circle"></span>
+        CALL HELPLINE <span class="btn-circle"></span>
       </a>
       <button class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Open Menu" aria-expanded="false" aria-controls="mobileDrawer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
